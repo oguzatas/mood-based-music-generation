@@ -1,0 +1,52 @@
+# MusicVAE Generator - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core GUI and System Libraries
+# These are typically included with Python but listed for completeness
+configparser>=5.0.0
+pathlib2>=2.3.0; python_version < "3.4"
+
+# Audio Processing
+pygame>=2.1.0
+
+# Machine Learning and Music Generation
+tensorflow>=2.8.0
+tensorflow-gpu>=2.8.0; platform_machine != "arm64"  # Optional GPU support
+magenta>=2.1.0
+tensorflow-datasets>=4.4.0
+tensorflow-probability>=0.15.0
+
+# Utilities
+numpy>=1.19.0
+scipy>=1.7.0
+librosa>=0.8.0
+pretty-midi>=0.2.9
+pyfluidsynth>=1.3.0
+
+# Optional: For better audio format support
+pydub>=0.25.0
+
+# Development dependencies (optional)
+# Uncomment if you plan to modify the code
+# pytest>=6.0.0
+# pytest-cov>=2.10.0
+# black>=21.0.0
+# flake8>=3.8.0
+# mypy>=0.812
+
+# Note: Some dependencies may require system-level packages:
+# 
+# For FluidSynth (required for MIDI to WAV conversion):
+# - Ubuntu/Debian: sudo apt-get install fluidsynth libfluidsynth-dev
+# - macOS: brew install fluidsynth
+# - Windows: Download from https://www.fluidsynth.org/
+#
+# For audio support:
+# - Ubuntu/Debian: sudo apt-get install portaudio19-dev python3-pyaudio
+# - macOS: brew install portaudio
+# - Windows: Usually included with pygame
+#
+# CUDA support (for GPU acceleration):
+# - NVIDIA GPU with CUDA Compute Capability 3.5 or higher
+# - CUDA Toolkit 11.2 or higher
+# - cuDNN 8.1.0 or higher
