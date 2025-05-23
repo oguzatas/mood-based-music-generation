@@ -1,6 +1,7 @@
 """
 Main application class for MusicVAE Generator
 """
+from typing import Dict, Set, Tuple
 import tkinter as tk
 from tkinter import messagebox, ttk
 import logging
@@ -230,46 +231,50 @@ class MusicGeneratorApp:
     
     def on_generation_finished(self, success: bool, error: Optional[str]) -> None:
         """Callback when generation finishes"""
-        if success:
-            self.progress_frame.set_status(_("Generation complete. Starting conversion..."))
-            self.log_widget.log_message(_("Music generation completed successfully"), "SUCCESS")
-            self.start_conversion()
-        else:
-            error_msg = error or _("Unknown error occurred")
-            self.progress_frame.set_status(_("Generation failed"))
-            self.log_widget.log_message(f"Generation failed: {error_msg}", "ERROR")
-            messagebox.showerror(_("Generation Error"), error_msg)
-            self.set_generation_state(False)
+        def update_ui():
+            if success:
+                self.progress_frame.set_status(_("Generation complete. Starting conversion..."))
+                self.log_widget.log_message(_("Music generation completed successfully"), "SUCCESS")
+                self.start_conversion()
+            else:
+                error_msg = error or _("Unknown error occurred")
+                self.progress_frame.set_status(_("Generation failed"))
+                self.log_widget.log_message(f"Generation failed: {error_msg}", "ERROR")
+                messagebox.showerror(_("Generation Error"), error_msg)
+                self.set_generation_state(False)
+        self.root.after(0, update_ui)
     
     def on_generation_log(self, message: str) -> None:
         """Callback for generation log messages"""
-        self.log_widget.log_message(message)
+        self.root.after(0, lambda: self.log_widget.log_message(message))
     
     def start_conversion(self) -> None:
         """Start MIDI to WAV conversion process"""
         def on_progress(current: int, total: int):
-            progress = (current / total) * 100 if total > 0 else 0
-            self.progress_frame.set_progress(progress)
-            self.progress_frame.set_status(
-                _("Converting {current}/{total}...").format(current=current, total=total)
-            )
+            def update_progress():
+                progress = (current / total) * 100 if total > 0 else 0
+                self.progress_frame.set_progress(progress)
+                self.progress_frame.set_status(
+                    _(f"Converting {current}/{total}...")
+                )
+            self.root.after(0, update_progress)
         
         def on_completion(converted_files: List[Path]):
-            count = len(converted_files)
-            if count > 0:
-                self.progress_frame.set_status(
-                    _("Conversion complete! {count} files ready").format(count=count)
-                )
-                self.log_widget.log_message(
-                    f"Successfully converted {count} files to WAV format", "SUCCESS"
-                )
-            else:
-                self.progress_frame.set_status(_("No files were converted"))
-                self.log_widget.log_message("No MIDI files found for conversion", "WARNING")
-            
-            self.refresh_file_list()
-            self.set_generation_state(False)
-        
+            def update_completion():
+                count = len(converted_files)
+                if count > 0:
+                    self.progress_frame.set_status(
+                        _(f"Conversion complete! {count} files ready")
+                    )
+                    self.log_widget.log_message(
+                        f"Successfully converted {count} files to WAV format", "SUCCESS"
+                    )
+                else:
+                    self.progress_frame.set_status(_("No files were converted"))
+                    self.log_widget.log_message("No MIDI files found for conversion", "WARNING")
+                self.refresh_file_list()
+                self.set_generation_state(False)
+            self.root.after(0, update_completion)
         self.generator.start_conversion_worker(on_progress, on_completion)
     
     def refresh_file_list(self) -> None:

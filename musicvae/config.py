@@ -1,9 +1,10 @@
 """
 Configuration management module for MusicVAE Generator
 """
+from typing import Set, Tuple
 import configparser
 from pathlib import Path
-from typing import Dict, Any
+from typing import Dict, Any , List
 
 
 class AppConfig:
@@ -99,7 +100,8 @@ class AppConfig:
     
     @property
     def default_volume(self) -> int:
-        return int(self.get_value('SETTINGS', 'volume', '70'))
+        return int(float(self.get_value('SETTINGS', 'volume', '70')))
+
     
     @property
     def language(self) -> str:
@@ -115,7 +117,7 @@ class AppConfig:
         ]
         return all(path.exists() for path in required_paths)
     
-    def get_missing_paths(self) -> list[Path]:
+    def get_missing_paths(self) -> List[Path]:
         """Get list of missing required paths"""
         required_paths = [
             self.music_vae_path,

@@ -1,0 +1,87 @@
+2025-05-23 17:11:45,314 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-23 17:11:45,403 - __main__ - ERROR - ✗ pygame not available
+2025-05-23 17:11:45,406 - __main__ - WARNING - ! tensorflow not available (required for music generation)
+2025-05-23 17:11:45,406 - __main__ - WARNING - ! magenta not available (required for music generation)
+2025-05-23 17:11:45,406 - __main__ - ERROR - Missing required dependencies: pygame
+2025-05-23 17:11:45,407 - __main__ - INFO - Application shutdown complete
+2025-05-23 17:21:03,845 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-23 17:21:03,854 - __main__ - ERROR - ✗ pygame not available
+2025-05-23 17:21:03,856 - __main__ - WARNING - ! tensorflow not available (required for music generation)
+2025-05-23 17:21:03,856 - __main__ - WARNING - ! magenta not available (required for music generation)
+2025-05-23 17:21:03,856 - __main__ - ERROR - Missing required dependencies: pygame
+2025-05-23 17:21:03,856 - __main__ - INFO - Application shutdown complete
+2025-05-23 17:34:03,687 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-23 17:34:07,575 - __main__ - INFO - ✓ tensorflow available
+2025-05-23 17:34:25,118 - __main__ - INFO - ✓ magenta available
+2025-05-23 17:34:25,118 - __main__ - INFO - Loading main application...
+2025-05-23 17:34:25,124 - __main__ - ERROR - Application error: 'type' object is not subscriptable
+Traceback (most recent call last):
+  File "main.py", line 126, in main
+    from main_app import main as run_app
+  File "C:\Users\oguzh\magenta_musicgen\musicvae\.\main_app.py", line 10, in <module>
+    from config import AppConfig
+  File "C:\Users\oguzh\magenta_musicgen\musicvae\.\config.py", line 9, in <module>
+    class AppConfig:
+  File "C:\Users\oguzh\magenta_musicgen\musicvae\.\config.py", line 118, in AppConfig
+    def get_missing_paths(self) -> list[Path]:
+TypeError: 'type' object is not subscriptable
+2025-05-23 17:34:25,124 - __main__ - INFO - Application shutdown complete
+2025-05-23 18:37:44,769 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-23 18:37:47,086 - __main__ - INFO - ✓ tensorflow available
+2025-05-23 18:37:57,410 - __main__ - INFO - ✓ magenta available
+2025-05-23 18:37:57,410 - __main__ - INFO - Loading main application...
+2025-05-23 18:37:57,427 - __main__ - ERROR - Application error: 'type' object is not subscriptable
+Traceback (most recent call last):
+  File "main.py", line 126, in main
+    from main_app import main as run_app
+  File "C:\Users\oguzh\magenta_musicgen\musicvae\.\main_app.py", line 11, in <module>
+    from music_generator import MusicVAEGenerator
+  File "C:\Users\oguzh\magenta_musicgen\musicvae\.\music_generator.py", line 15, in <module>
+    class MusicVAEGenerator:
+  File "C:\Users\oguzh\magenta_musicgen\musicvae\.\music_generator.py", line 198, in MusicVAEGenerator
+    def get_generated_files(self) -> tuple[List[Path], List[Path]]:
+TypeError: 'type' object is not subscriptable
+2025-05-23 18:37:57,427 - __main__ - INFO - Application shutdown complete
+2025-05-23 18:39:56,602 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-23 18:39:58,795 - __main__ - INFO - ✓ tensorflow available
+2025-05-23 18:40:08,228 - __main__ - INFO - ✓ magenta available
+2025-05-23 18:40:08,228 - __main__ - INFO - Loading main application...
+2025-05-23 18:40:08,276 - __main__ - INFO - Starting GUI application...
+2025-05-23 18:40:08,340 - localization - INFO - Language set to English (default)
+2025-05-23 18:40:08,340 - root - ERROR - Fatal error in main application: invalid literal for int() with base 10: '70.0'
+2025-05-23 18:40:11,166 - __main__ - ERROR - Application error: invalid literal for int() with base 10: '70.0'
+Traceback (most recent call last):
+  File "main.py", line 129, in main
+    run_app()
+  File "C:\Users\oguzh\magenta_musicgen\musicvae\.\main_app.py", line 388, in main
+    app = MusicGeneratorApp(root)
+  File "C:\Users\oguzh\magenta_musicgen\musicvae\.\main_app.py", line 35, in __init__
+    self.audio_player = AudioPlayer(self.config.default_volume / 100)
+  File "C:\Users\oguzh\magenta_musicgen\musicvae\.\config.py", line 103, in default_volume
+    return int(self.get_value('SETTINGS', 'volume', '70'))
+ValueError: invalid literal for int() with base 10: '70.0'
+2025-05-23 18:40:11,172 - __main__ - INFO - Application shutdown complete
+2025-05-23 18:46:46,701 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-23 18:46:48,879 - __main__ - INFO - ✓ tensorflow available
+2025-05-23 18:46:58,868 - __main__ - INFO - ✓ magenta available
+2025-05-23 18:46:58,868 - __main__ - INFO - Loading main application...
+2025-05-23 18:46:58,883 - __main__ - INFO - Starting GUI application...
+2025-05-23 18:46:58,930 - localization - INFO - Language set to English (default)
+2025-05-23 18:46:59,084 - audio_player - INFO - Audio player initialized successfully
+2025-05-23 18:47:39,987 - music_generator - INFO - Starting conversion of 2 MIDI files
+2025-05-23 18:50:53,917 - audio_player - INFO - Playback stopped
+2025-05-23 18:50:53,917 - audio_player - INFO - Playback stopped
+2025-05-23 18:50:54,001 - audio_player - INFO - Audio player cleaned up
+2025-05-23 18:50:54,001 - __main__ - INFO - Application shutdown complete
+2025-05-23 21:36:27,291 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-23 21:36:29,631 - __main__ - INFO - ✓ tensorflow available
+2025-05-23 21:36:39,763 - __main__ - INFO - ✓ magenta available
+2025-05-23 21:36:39,763 - __main__ - INFO - Loading main application...
+2025-05-23 21:36:39,767 - __main__ - INFO - Starting GUI application...
+2025-05-23 21:36:39,813 - localization - INFO - Language set to English (default)
+2025-05-23 21:36:39,929 - audio_player - INFO - Audio player initialized successfully
+2025-05-23 21:37:16,178 - music_generator - INFO - Starting conversion of 3 MIDI files
+2025-05-23 21:42:21,261 - audio_player - INFO - Playback stopped
+2025-05-23 21:42:21,262 - audio_player - INFO - Playback stopped
+2025-05-23 21:42:21,330 - audio_player - INFO - Audio player cleaned up
+2025-05-23 21:42:21,331 - __main__ - INFO - Application shutdown complete

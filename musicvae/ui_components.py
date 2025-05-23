@@ -1,6 +1,7 @@
 """
 Reusable UI components for the MusicVAE Generator application
 """
+from typing import Dict, Set, Tuple
 import tkinter as tk
 from tkinter import ttk
 from pathlib import Path

@@ -1,6 +1,7 @@
 """
 Audio playback management module
 """
+from typing import Dict, List, Set, Tuple
 import pygame
 import logging
 from pathlib import Path
@@ -23,7 +24,7 @@ class AudioPlayer:
         self.current_file: Optional[Path] = None
         self.state = PlaybackState.STOPPED
         self.volume = initial_volume
-        self.playback_callbacks: list[Callable[[PlaybackState], None]] = []
+        self.playback_callbacks: List[Callable[[PlaybackState], None]] = []
         
         # Initialize pygame mixer
         try:
@@ -172,7 +173,7 @@ class AudioPlayer:
         supported_formats = {'.wav', '.mp3', '.ogg', '.mid', '.midi'}
         return file_path.suffix.lower() in supported_formats
     
-    def get_supported_formats(self) -> list[str]:
+    def get_supported_formats(self) -> List[str]:
         """Get list of supported audio formats"""
         return ['.wav', '.mp3', '.ogg', '.mid', '.midi']
     

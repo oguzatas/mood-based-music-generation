@@ -1,6 +1,7 @@
 """
 Localization and internationalization module
 """
+from typing import Dict, List, Set, Tuple
 import gettext
 import logging
 from pathlib import Path
@@ -81,12 +82,12 @@ class LocalizationManager:
             self.logger.error(f"Translation error for '{message}': {e}")
             return message
     
-    def get_available_languages(self) -> list[str]:
+    def get_available_languages(self) -> List[str]:
         """
         Get list of available languages based on locale directory
         
         Returns:
-            list[str]: List of available language codes
+            List[str]: List of available language codes
         """
         available = ['en']  # English is always available as default
         
@@ -106,7 +107,7 @@ class LocalizationManager:
         
         return sorted(available)
     
-    def create_translation_template(self, source_files: list[Path], output_file: Optional[Path] = None) -> bool:
+    def create_translation_template(self, source_files: List[Path], output_file: Optional[Path] = None) -> bool:
         """
         Create a .pot template file from source files for translation
         
@@ -154,7 +155,7 @@ class LocalizationManager:
         import builtins
         builtins._ = self._translation_func
     
-    def get_language_display_names(self) -> dict[str, str]:
+    def get_language_display_names(self) -> Dict[str, str]:
         """
         Get display names for available languages
         

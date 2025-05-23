@@ -1,6 +1,7 @@
 """
 Music generation module using MusicVAE
 """
+from typing import Dict, Set, Tuple
 import os
 import subprocess
 import threading
@@ -195,7 +196,7 @@ class MusicVAEGenerator:
         
         threading.Thread(target=conversion_worker, daemon=True).start()
     
-    def get_generated_files(self) -> tuple[List[Path], List[Path]]:
+    def get_generated_files(self) -> Tuple[List[Path], List[Path]]:
         """Get lists of generated MIDI and WAV files"""
         midi_files = sorted(self.config.output_dir.glob("*.mid"))
         wav_files = sorted(self.config.output_dir.glob("*.wav"))
