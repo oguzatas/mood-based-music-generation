@@ -669,3 +669,216 @@ Instructions for updating:
 2025-05-24 22:22:34,406 - musicvae_wrapper - INFO - GA: Generating for individual 1823888610304
 2025-05-24 22:22:36,952 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_1823888610304.mid
 2025-05-24 22:24:05,958 - audio_player - INFO - Started playing: music_gen_0_1823888610304.mid
+2025-05-24 22:36:54,836 - audio_player - INFO - Playback stopped
+2025-05-24 22:36:54,838 - audio_player - INFO - Playback stopped
+2025-05-24 22:36:54,890 - audio_player - INFO - Audio player cleaned up
+2025-05-24 22:36:54,890 - __main__ - INFO - Application shutdown complete
+2025-05-24 22:37:39,587 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-24 22:37:41,728 - __main__ - INFO - ✓ tensorflow available
+2025-05-24 22:37:50,200 - __main__ - INFO - ✓ magenta available
+2025-05-24 22:37:50,200 - __main__ - INFO - Loading main application...
+2025-05-24 22:37:50,204 - __main__ - INFO - Starting GUI application...
+2025-05-24 22:37:50,241 - localization - INFO - Language set to English (default)
+2025-05-24 22:37:50,348 - audio_player - INFO - Audio player initialized successfully
+2025-05-24 22:38:03,161 - tensorflow - INFO - Building MusicVAE model with BidirectionalLstmEncoder, HierarchicalLstmDecoder, and hparams:
+{'max_seq_len': 256, 'z_size': 512, 'free_bits': 256, 'max_beta': 0.2, 'beta_rate': 0.0, 'batch_size': 1, 'grad_clip': 1.0, 'clip_mode': 'global_norm', 'grad_norm_clip_to_zero': 10000, 'learning_rate': 0.001, 'decay_rate': 0.9999, 'min_learning_rate': 1e-05, 'conditional': True, 'dec_rnn_size': [1024, 1024], 'enc_rnn_size': [2048, 2048], 'dropout_keep_prob': 1.0, 'sampling_schedule': 'constant', 'sampling_rate': 0.0, 'use_cudnn': False, 'residual_encoder': False, 'residual_decoder': False, 'control_preprocessing_rnn_size': [256]}
+2025-05-24 22:38:03,164 - tensorflow - INFO - 
+Encoder Cells (bidirectional):
+  units: [2048, 2048]
+
+2025-05-24 22:38:03,168 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-24 22:38:03,173 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-24 22:38:03,176 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-24 22:38:03,180 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-24 22:38:03,180 - tensorflow - INFO - 
+Hierarchical Decoder:
+  input length: 256
+  level output lengths: [16, 16]
+
+2025-05-24 22:38:03,187 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-24 22:38:03,193 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-24 22:38:03,194 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-24 22:38:03,200 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-24 22:38:03,202 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-24 22:38:03,208 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-24 22:38:03,208 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-24 22:38:03,217 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-24 22:38:06,375 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\util\dispatch.py:1082: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+2025-05-24 22:38:06,376 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\magenta\contrib\rnn.py:464: bidirectional_dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.Bidirectional(keras.layers.RNN(cell))`, which is equivalent to this API
+2025-05-24 22:38:06,376 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\ops\rnn.py:437: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+2025-05-24 22:38:06,525 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow_probability\python\distributions\distribution.py:342: calling MultivariateNormalDiag.__init__ (from tensorflow_probability.python.distributions.mvn_diag) with scale_identity_multiplier is deprecated and will be removed after 2020-01-01.
+Instructions for updating:
+`scale_identity_multiplier` is deprecated; please combine it into `scale_diag` directly instead.
+2025-05-24 22:38:06,562 - tensorflow - INFO - Restoring parameters from C:/Users/oguzh/magenta_musicgen/models/hierdec-trio_16bar/hierdec-trio_16bar.ckpt
+2025-05-24 22:38:07,236 - musicvae_wrapper - INFO - GA: Generating for individual 2663003733296
+2025-05-24 22:38:09,626 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663003733296.mid
+2025-05-24 22:38:09,627 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663003733296.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663003733296.wav -r 44100 -q
+2025-05-24 22:38:39,635 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:38:39,636 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2663003733296.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:38:39,637 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663003733296.mid
+2025-05-24 22:38:39,647 - musicvae_wrapper - INFO - GA: Estimated tempo: 240.0
+2025-05-24 22:38:39,648 - musicvae_wrapper - INFO - GA: Fitness for individual 2663003733296: -140.0
+2025-05-24 22:38:39,648 - musicvae_wrapper - INFO - GA: Generating for individual 2661509746304
+2025-05-24 22:38:40,777 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2661509746304.mid
+2025-05-24 22:38:40,778 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2661509746304.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2661509746304.wav -r 44100 -q
+2025-05-24 22:39:10,786 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:39:10,786 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2661509746304.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:39:10,786 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2661509746304.mid
+2025-05-24 22:39:10,793 - musicvae_wrapper - INFO - GA: Estimated tempo: 238.02739726027406
+2025-05-24 22:39:10,793 - musicvae_wrapper - INFO - GA: Fitness for individual 2661509746304: -138.02739726027406
+2025-05-24 22:39:10,793 - musicvae_wrapper - INFO - GA: Generating for individual 2663004957136
+2025-05-24 22:39:11,890 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663004957136.mid
+2025-05-24 22:39:11,890 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663004957136.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663004957136.wav -r 44100 -q
+2025-05-24 22:39:41,899 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:39:41,900 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2663004957136.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:39:41,900 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663004957136.mid
+2025-05-24 22:39:41,905 - musicvae_wrapper - INFO - GA: Estimated tempo: 227.05394190871363
+2025-05-24 22:39:41,908 - musicvae_wrapper - INFO - GA: Fitness for individual 2663004957136: -127.05394190871363
+2025-05-24 22:39:41,908 - musicvae_wrapper - INFO - GA: Generating for individual 2663005078192
+2025-05-24 22:39:43,109 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663005078192.mid
+2025-05-24 22:39:43,109 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663005078192.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663005078192.wav -r 44100 -q
+2025-05-24 22:40:13,118 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:40:13,118 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2663005078192.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:40:13,118 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663005078192.mid
+2025-05-24 22:40:13,127 - musicvae_wrapper - INFO - GA: Estimated tempo: 240.0
+2025-05-24 22:40:13,127 - musicvae_wrapper - INFO - GA: Fitness for individual 2663005078192: -140.0
+2025-05-24 22:40:13,128 - musicvae_wrapper - INFO - GA: Generating for individual 2663005077664
+2025-05-24 22:40:14,250 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663005077664.mid
+2025-05-24 22:40:14,251 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663005077664.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663005077664.wav -r 44100 -q
+2025-05-24 22:40:44,260 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:40:44,260 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2663005077664.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:40:44,262 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663005077664.mid
+2025-05-24 22:40:44,270 - musicvae_wrapper - INFO - GA: Estimated tempo: 238.79999999999995
+2025-05-24 22:40:44,271 - musicvae_wrapper - INFO - GA: Fitness for individual 2663005077664: -138.79999999999995
+2025-05-24 22:40:44,271 - musicvae_wrapper - INFO - GA: Generating for individual 2663005077760
+2025-05-24 22:40:45,413 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663005077760.mid
+2025-05-24 22:40:45,413 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663005077760.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663005077760.wav -r 44100 -q
+2025-05-24 22:41:15,421 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:41:15,422 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2663005077760.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:41:15,423 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2663005077760.mid
+2025-05-24 22:41:15,428 - musicvae_wrapper - INFO - GA: Estimated tempo: 194.28571428571428
+2025-05-24 22:41:15,428 - musicvae_wrapper - INFO - GA: Fitness for individual 2663005077760: -94.28571428571428
+2025-05-24 22:41:15,430 - musicvae_wrapper - INFO - GA: Generating for individual 2663005077760
+2025-05-24 22:41:16,547 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005077760.mid
+2025-05-24 22:41:16,547 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005077760.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005077760.wav -r 44100 -q
+2025-05-24 22:41:46,560 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:41:46,564 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2663005077760.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:41:46,565 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005077760.mid
+2025-05-24 22:41:46,568 - musicvae_wrapper - INFO - GA: Estimated tempo: 209.45454545454547
+2025-05-24 22:41:46,570 - musicvae_wrapper - INFO - GA: Fitness for individual 2663005077760: -109.45454545454547
+2025-05-24 22:41:46,570 - musicvae_wrapper - INFO - GA: Generating for individual 2663004957136
+2025-05-24 22:41:47,722 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663004957136.mid
+2025-05-24 22:41:47,722 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663004957136.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663004957136.wav -r 44100 -q
+2025-05-24 22:42:17,732 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:42:17,732 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2663004957136.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:42:17,732 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663004957136.mid
+2025-05-24 22:42:17,737 - musicvae_wrapper - INFO - GA: Estimated tempo: 227.46987951807208
+2025-05-24 22:42:17,737 - musicvae_wrapper - INFO - GA: Fitness for individual 2663004957136: -127.46987951807208
+2025-05-24 22:42:17,738 - musicvae_wrapper - INFO - GA: Generating for individual 2661509746304
+2025-05-24 22:42:18,900 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2661509746304.mid
+2025-05-24 22:42:18,901 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2661509746304.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2661509746304.wav -r 44100 -q
+2025-05-24 22:42:48,908 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:42:48,908 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2661509746304.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:42:48,908 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2661509746304.mid
+2025-05-24 22:42:48,917 - musicvae_wrapper - INFO - GA: Estimated tempo: 235.54376657824955
+2025-05-24 22:42:48,918 - musicvae_wrapper - INFO - GA: Fitness for individual 2661509746304: -135.54376657824955
+2025-05-24 22:42:48,918 - musicvae_wrapper - INFO - GA: Generating for individual 2663005078624
+2025-05-24 22:42:50,021 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005078624.mid
+2025-05-24 22:42:50,021 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005078624.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005078624.wav -r 44100 -q
+2025-05-24 22:43:20,029 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:43:20,029 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2663005078624.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:43:20,030 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005078624.mid
+2025-05-24 22:43:20,034 - musicvae_wrapper - INFO - GA: Estimated tempo: 230.2890173410403
+2025-05-24 22:43:20,034 - musicvae_wrapper - INFO - GA: Fitness for individual 2663005078624: -130.2890173410403
+2025-05-24 22:43:20,034 - musicvae_wrapper - INFO - GA: Generating for individual 2663005078720
+2025-05-24 22:43:21,147 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005078720.mid
+2025-05-24 22:43:21,147 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005078720.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005078720.wav -r 44100 -q
+2025-05-24 22:43:51,156 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:43:51,157 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2663005078720.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:43:51,158 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005078720.mid
+2025-05-24 22:43:51,163 - musicvae_wrapper - INFO - GA: Estimated tempo: 200.0
+2025-05-24 22:43:51,163 - musicvae_wrapper - INFO - GA: Fitness for individual 2663005078720: -100.0
+2025-05-24 22:43:51,163 - musicvae_wrapper - INFO - GA: Generating for individual 2663005078864
+2025-05-24 22:43:52,279 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005078864.mid
+2025-05-24 22:43:52,279 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005078864.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005078864.wav -r 44100 -q
+2025-05-24 22:44:22,288 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:44:22,288 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2663005078864.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:44:22,289 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2663005078864.mid
+2025-05-24 22:44:22,292 - musicvae_wrapper - INFO - GA: Estimated tempo: 210.0
+2025-05-24 22:44:22,293 - musicvae_wrapper - INFO - GA: Fitness for individual 2663005078864: -110.0
+2025-05-24 22:44:22,295 - musicvae_wrapper - INFO - GA: Generating for individual 2663005078720
+2025-05-24 22:44:23,428 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663005078720.mid
+2025-05-24 22:44:23,428 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663005078720.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663005078720.wav -r 44100 -q
+2025-05-24 22:44:53,438 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:44:53,441 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2663005078720.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:44:53,441 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663005078720.mid
+2025-05-24 22:44:53,446 - musicvae_wrapper - INFO - GA: Estimated tempo: 217.5
+2025-05-24 22:44:53,446 - musicvae_wrapper - INFO - GA: Fitness for individual 2663005078720: -117.5
+2025-05-24 22:44:53,448 - musicvae_wrapper - INFO - GA: Generating for individual 2663005077760
+2025-05-24 22:44:54,579 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663005077760.mid
+2025-05-24 22:44:54,579 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663005077760.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663005077760.wav -r 44100 -q
+2025-05-24 22:45:24,591 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:45:24,592 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2663005077760.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:45:24,592 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663005077760.mid
+2025-05-24 22:45:24,596 - musicvae_wrapper - INFO - GA: Estimated tempo: 194.04255319148936
+2025-05-24 22:45:24,597 - musicvae_wrapper - INFO - GA: Fitness for individual 2663005077760: -94.04255319148936
+2025-05-24 22:45:24,597 - musicvae_wrapper - INFO - GA: Generating for individual 2663005078864
+2025-05-24 22:45:25,687 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663005078864.mid
+2025-05-24 22:45:25,687 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663005078864.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663005078864.wav -r 44100 -q
+2025-05-24 22:45:55,696 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:45:55,696 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2663005078864.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:45:55,696 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663005078864.mid
+2025-05-24 22:45:55,704 - musicvae_wrapper - INFO - GA: Estimated tempo: 196.36363636363635
+2025-05-24 22:45:55,704 - musicvae_wrapper - INFO - GA: Fitness for individual 2663005078864: -96.36363636363635
+2025-05-24 22:45:55,704 - musicvae_wrapper - INFO - GA: Generating for individual 2663171444160
+2025-05-24 22:45:56,798 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663171444160.mid
+2025-05-24 22:45:56,799 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663171444160.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663171444160.wav -r 44100 -q
+2025-05-24 22:46:26,805 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:46:26,805 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2663171444160.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:46:26,805 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663171444160.mid
+2025-05-24 22:46:26,812 - musicvae_wrapper - INFO - GA: Estimated tempo: 238.01652892561984
+2025-05-24 22:46:26,812 - musicvae_wrapper - INFO - GA: Fitness for individual 2663171444160: -138.01652892561984
+2025-05-24 22:46:26,813 - musicvae_wrapper - INFO - GA: Generating for individual 2663171444256
+2025-05-24 22:46:27,957 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663171444256.mid
+2025-05-24 22:46:27,957 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663171444256.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663171444256.wav -r 44100 -q
+2025-05-24 22:46:57,966 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:46:57,968 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2663171444256.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:46:57,968 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663171444256.mid
+2025-05-24 22:46:57,974 - musicvae_wrapper - INFO - GA: Estimated tempo: 233.4065934065934
+2025-05-24 22:46:57,976 - musicvae_wrapper - INFO - GA: Fitness for individual 2663171444256: -133.4065934065934
+2025-05-24 22:46:57,976 - musicvae_wrapper - INFO - GA: Generating for individual 2663171444352
+2025-05-24 22:46:59,146 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663171444352.mid
+2025-05-24 22:46:59,146 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663171444352.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663171444352.wav -r 44100 -q
+2025-05-24 22:47:29,157 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-24 22:47:29,157 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2663171444352.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-24 22:47:29,159 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2663171444352.mid
+2025-05-24 22:47:29,164 - musicvae_wrapper - INFO - GA: Estimated tempo: 236.47058823529431
+2025-05-24 22:47:29,164 - musicvae_wrapper - INFO - GA: Fitness for individual 2663171444352: -136.47058823529431
+2025-05-24 22:47:58,398 - audio_player - INFO - Started playing: music_gen_0_2661509746304.mid
+2025-05-24 22:48:13,420 - audio_player - INFO - Playback stopped
+2025-05-24 22:48:13,843 - audio_player - INFO - Started playing: music_gen_0_2663003733296.mid
+2025-05-24 22:48:47,173 - audio_player - INFO - Playback stopped
+2025-05-24 22:48:47,832 - audio_player - INFO - Started playing: music_gen_0_2663005077760.mid
+2025-05-24 22:49:22,163 - audio_player - INFO - Started playing: music_gen_0_2663005078192.mid
+2025-05-24 22:49:27,041 - audio_player - INFO - Playback stopped
+2025-05-24 22:49:28,291 - audio_player - INFO - Started playing: music_gen_1_2661509746304.mid
+2025-05-24 22:49:31,671 - audio_player - INFO - Playback stopped
+2025-05-24 22:49:32,786 - audio_player - INFO - Started playing: music_gen_1_2663005077760.mid
+2025-05-24 22:50:06,157 - audio_player - INFO - Started playing: music_gen_1_2663005078624.mid
+2025-05-24 22:50:55,497 - audio_player - INFO - Playback stopped
+2025-05-24 22:50:57,140 - audio_player - INFO - Started playing: music_gen_1_2663005078720.mid
