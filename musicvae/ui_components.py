@@ -232,6 +232,25 @@ class SettingsFrame(ttk.LabelFrame, TooltipMixin):
         self.outputs_entry.grid(row=0, column=1, sticky="w", padx=(5, 0), pady=2)
         self.create_tooltip(self.outputs_entry, _("How many music pieces to generate (1-10)"))
         
+        # GA parameters
+        ttk.Label(self, text=_("GA Population Size:")).grid(row=2, column=0, sticky="w", pady=2)
+        self.ga_population_var = tk.IntVar(value=6)
+        self.ga_population_entry = ttk.Entry(self, textvariable=self.ga_population_var, width=8)
+        self.ga_population_entry.grid(row=2, column=1, sticky="w", padx=(5, 0), pady=2)
+        self.create_tooltip(self.ga_population_entry, _("Number of individuals in GA population"))
+
+        ttk.Label(self, text=_("GA Generations:")).grid(row=3, column=0, sticky="w", pady=2)
+        self.ga_generations_var = tk.IntVar(value=3)
+        self.ga_generations_entry = ttk.Entry(self, textvariable=self.ga_generations_var, width=8)
+        self.ga_generations_entry.grid(row=3, column=1, sticky="w", padx=(5, 0), pady=2)
+        self.create_tooltip(self.ga_generations_entry, _("Number of generations for GA"))
+
+        ttk.Label(self, text=_("GA Latent Dim:")).grid(row=4, column=0, sticky="w", pady=2)
+        self.ga_latent_dim_var = tk.IntVar(value=8)
+        self.ga_latent_dim_entry = ttk.Entry(self, textvariable=self.ga_latent_dim_var, width=8)
+        self.ga_latent_dim_entry.grid(row=4, column=1, sticky="w", padx=(5, 0), pady=2)
+        self.create_tooltip(self.ga_latent_dim_entry, _("Latent vector dimension for GA"))
+        
         # Volume control
         ttk.Label(self, text=_("Volume:")).grid(row=1, column=0, sticky="w", pady=2)
         self.volume_var = tk.DoubleVar(value=70)
@@ -276,6 +295,15 @@ class SettingsFrame(ttk.LabelFrame, TooltipMixin):
         """Set the volume (0.0-1.0)"""
         volume_percent = max(0, min(100, value * 100))
         self.volume_var.set(volume_percent)
+
+    def get_population_size(self) -> int:
+        return self.ga_population_var.get()
+
+    def get_generations(self) -> int:
+        return self.ga_generations_var.get()
+
+    def get_latent_dim(self) -> int:
+        return self.ga_latent_dim_var.get()
 
 
 class PlaybackControlsFrame(tk.Frame):

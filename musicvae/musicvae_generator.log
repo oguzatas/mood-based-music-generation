@@ -85,3 +85,36 @@ ValueError: invalid literal for int() with base 10: '70.0'
 2025-05-23 21:42:21,262 - audio_player - INFO - Playback stopped
 2025-05-23 21:42:21,330 - audio_player - INFO - Audio player cleaned up
 2025-05-23 21:42:21,331 - __main__ - INFO - Application shutdown complete
+2025-05-24 02:56:27,454 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-24 02:56:31,710 - __main__ - INFO - ✓ tensorflow available
+2025-05-24 02:56:41,128 - __main__ - INFO - ✓ magenta available
+2025-05-24 02:56:41,128 - __main__ - INFO - Loading main application...
+2025-05-24 02:56:41,128 - __main__ - INFO - Starting GUI application...
+2025-05-24 02:56:41,203 - localization - INFO - Language set to English (default)
+2025-05-24 02:56:41,309 - audio_player - INFO - Audio player initialized successfully
+2025-05-24 02:57:10,420 - music_generator - INFO - Starting conversion of 4 MIDI files
+2025-05-24 03:00:10,842 - audio_player - INFO - Playback stopped
+2025-05-24 03:00:10,842 - audio_player - INFO - Playback stopped
+2025-05-24 03:00:10,921 - audio_player - INFO - Audio player cleaned up
+2025-05-24 03:00:10,922 - __main__ - INFO - Application shutdown complete
+2025-05-24 03:01:44,358 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-24 03:01:46,564 - __main__ - INFO - ✓ tensorflow available
+2025-05-24 03:01:54,949 - __main__ - INFO - ✓ magenta available
+2025-05-24 03:01:54,949 - __main__ - INFO - Loading main application...
+2025-05-24 03:01:54,949 - __main__ - INFO - Starting GUI application...
+2025-05-24 03:01:54,981 - localization - INFO - Language set to English (default)
+2025-05-24 03:01:55,145 - audio_player - INFO - Audio player initialized successfully
+2025-05-24 03:02:20,555 - music_generator - INFO - Starting conversion of 1 MIDI files
+2025-05-24 03:03:19,337 - audio_player - INFO - Playback stopped
+2025-05-24 03:03:19,337 - audio_player - INFO - Playback stopped
+2025-05-24 03:03:19,419 - audio_player - INFO - Audio player cleaned up
+2025-05-24 03:03:19,420 - __main__ - INFO - Application shutdown complete
+2025-05-24 03:53:25,982 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-24 03:53:28,204 - __main__ - INFO - ✓ tensorflow available
+2025-05-24 03:53:36,631 - __main__ - INFO - ✓ magenta available
+2025-05-24 03:53:36,631 - __main__ - INFO - Loading main application...
+2025-05-24 03:53:36,640 - __main__ - INFO - Starting GUI application...
+2025-05-24 03:53:36,680 - localization - INFO - Language set to English (default)
+2025-05-24 03:53:36,801 - audio_player - INFO - Audio player initialized successfully
+2025-05-24 03:54:16,127 - music_generator - INFO - Starting conversion of 1 MIDI files
+2025-05-24 03:57:28,055 - music_generator - INFO - Starting conversion of 1 MIDI files

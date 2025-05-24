@@ -7,6 +7,8 @@ from tkinter import messagebox, ttk
 import logging
 from pathlib import Path
 from typing import Optional, List
+import glob
+import os
 
 from config import AppConfig
 from music_generator import MusicVAEGenerator
@@ -109,6 +111,14 @@ class MusicGeneratorApp:
         )
         self.generate_button.pack(side=tk.LEFT, padx=(0, 5))
         
+        # Add GA generate button
+        self.ga_generate_button = ttk.Button(
+            button_frame,
+            text=_("Generate with GA"),
+            command=self.start_ga_generation
+        )
+        self.ga_generate_button.pack(side=tk.LEFT, padx=(0, 5))
+        
         self.stop_generation_button = ttk.Button(
             button_frame,
             text=_("Stop Generation"),
@@ -208,6 +218,14 @@ class MusicGeneratorApp:
                 _("Number of outputs must be between 1 and 10")
             )
             return
+        
+        # Clean output directory before generation
+        for ext in ("*.mid", "*.wav"):
+            for f in self.config.output_dir.glob(ext):
+                try:
+                    f.unlink()
+                except Exception as e:
+                    self.log_widget.log_message(f"Failed to delete {f}: {e}", "WARNING")
         
         # Update UI state
         self.set_generation_state(True)
@@ -383,6 +401,46 @@ class MusicGeneratorApp:
             
         except Exception as e:
             self.logger.error(f"Error during cleanup: {e}")
+    
+    def start_ga_generation(self) -> None:
+        """Start music generation using a genetic algorithm"""
+        from genetic_algorithm import MusicGeneticAlgorithm
+        from musicvae_wrapper import MusicVAEWrapper
+        import threading
+
+        # Get GA parameters from UI
+        population_size = self.settings_frame.get_population_size()
+        generations = self.settings_frame.get_generations()
+        latent_dim = self.settings_frame.get_latent_dim()
+        output_dir = self.config.output_dir
+        output_dir.mkdir(exist_ok=True)
+
+        # Clean output directory before generation
+        for ext in ("*.mid", "*.wav", "*.txt"):
+            for f in output_dir.glob(ext):
+                try:
+                    f.unlink()
+                except Exception as e:
+                    self.log_widget.log_message(f"Failed to delete {f}: {e}", "WARNING")
+
+        def ga_worker():
+            self.log_widget.log_message("Starting Genetic Algorithm music generation...")
+            music_generator = MusicVAEWrapper()
+            ga = MusicGeneticAlgorithm(population_size, latent_dim, music_generator, output_dir)
+            for gen in range(generations):
+                ga.generation = gen
+                self.root.after(0, lambda g=gen: self.log_widget.log_message(f"GA Generation {g+1}/{generations}"))
+                ga.evaluate(ga.fitness_fn)
+                best = max(ga.population, key=lambda ind: ind.fitness)
+                self.root.after(0, lambda b=best: self.log_widget.log_message(f"  Best fitness: {b.fitness:.4f}"))
+                selected = ga.select()
+                ga.reproduce(selected)
+            self.root.after(0, lambda: self.log_widget.log_message("GA music generation complete."))
+            self.root.after(0, self.refresh_file_list)
+            self.root.after(0, lambda: self.set_generation_state(False))
+
+        self.set_generation_state(True)
+        threading.Thread(target=ga_worker, daemon=True).start()
 
 
 def main():
