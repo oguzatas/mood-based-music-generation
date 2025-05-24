@@ -3,6 +3,7 @@ import numpy as np
 from pathlib import Path
 from latent_vector_individual import LatentVectorIndividual
 from musicvae_wrapper import MusicVAEWrapper
+import pretty_midi
 
 class GeneticAlgorithm:
     def __init__(self, population_size: int, latent_dim: int):
@@ -30,19 +31,33 @@ class GeneticAlgorithm:
             children.append(child)
         self.population = selected + children
 
+def mood_to_target_tempo(mood: str) -> float:
+    return {
+        'calm': 70,
+        'excited': 120,
+        'tense': 100,
+        'neutral': 90
+    }.get(mood, 90)
+
 class MusicGeneticAlgorithm(GeneticAlgorithm):
-    def __init__(self, population_size: int, latent_dim: int, music_generator: MusicVAEWrapper, output_dir: Path):
+    def __init__(self, population_size: int, latent_dim: int, music_generator: MusicVAEWrapper, output_dir: Path, target_mood: str = 'calm'):
         super().__init__(population_size, latent_dim)
         self.music_generator = music_generator
         self.output_dir = output_dir
         self.generation = 0
+        self.target_mood = target_mood
+        self.target_tempo = mood_to_target_tempo(target_mood)
 
     def fitness_fn(self, individual: LatentVectorIndividual) -> float:
-        # Generate music and assign a dummy fitness (e.g., sum of latent vector)
-        output_path = self.output_dir / f"music_gen_{self.generation}_{id(individual)}.txt"
+        output_path = self.output_dir / f"music_gen_{self.generation}_{id(individual)}.mid"
         self.music_generator.generate(individual.vector, output_path)
-        # Dummy fitness: negative L2 norm (for demo)
-        return -np.linalg.norm(individual.vector)
+        try:
+            midi = pretty_midi.PrettyMIDI(str(output_path))
+            tempo = midi.estimate_tempo()
+        except Exception:
+            tempo = 0  # Penalize if MIDI can't be parsed
+        fitness = -abs(tempo - self.target_tempo)
+        return fitness
 
     def run(self, generations: int):
         for gen in range(generations):

@@ -297,15 +297,14 @@ class MusicGeneratorApp:
     
     def refresh_file_list(self) -> None:
         """Refresh the list of generated files"""
-        _, wav_files = self.generator.get_generated_files()
-        self.file_list_widget.update_files(wav_files)
-        
+        wav_files = sorted(self.config.output_dir.glob("*.wav"))
+        midi_files = sorted(self.config.output_dir.glob("*.mid"))
+        files = wav_files + midi_files
+        self.file_list_widget.update_files(files)
         # Update playback controls
-        has_files = len(wav_files) > 0
+        has_files = len(files) > 0
         self.playback_controls.enable_play(has_files)
-        
-        count = len(wav_files)
-        self.log_widget.log_message(f"Found {count} WAV files in output directory")
+        self.log_widget.log_message(f"Found {len(files)} files in output directory")
     
     def on_file_selected(self, file_path: Optional[Path]) -> None:
         """Handle file selection in the file list"""
@@ -412,6 +411,7 @@ class MusicGeneratorApp:
         population_size = self.settings_frame.get_population_size()
         generations = self.settings_frame.get_generations()
         latent_dim = self.settings_frame.get_latent_dim()
+        target_mood = self.settings_frame.get_mood()
         output_dir = self.config.output_dir
         output_dir.mkdir(exist_ok=True)
 
@@ -424,9 +424,9 @@ class MusicGeneratorApp:
                     self.log_widget.log_message(f"Failed to delete {f}: {e}", "WARNING")
 
         def ga_worker():
-            self.log_widget.log_message("Starting Genetic Algorithm music generation...")
+            self.log_widget.log_message(f"Starting Genetic Algorithm music generation for mood: {target_mood}...")
             music_generator = MusicVAEWrapper()
-            ga = MusicGeneticAlgorithm(population_size, latent_dim, music_generator, output_dir)
+            ga = MusicGeneticAlgorithm(population_size, latent_dim, music_generator, output_dir, target_mood=target_mood)
             for gen in range(generations):
                 ga.generation = gen
                 self.root.after(0, lambda g=gen: self.log_widget.log_message(f"GA Generation {g+1}/{generations}"))

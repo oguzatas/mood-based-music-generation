@@ -246,10 +246,22 @@ class SettingsFrame(ttk.LabelFrame, TooltipMixin):
         self.create_tooltip(self.ga_generations_entry, _("Number of generations for GA"))
 
         ttk.Label(self, text=_("GA Latent Dim:")).grid(row=4, column=0, sticky="w", pady=2)
-        self.ga_latent_dim_var = tk.IntVar(value=8)
-        self.ga_latent_dim_entry = ttk.Entry(self, textvariable=self.ga_latent_dim_var, width=8)
+        self.ga_latent_dim_var = tk.IntVar(value=512)
+        self.ga_latent_dim_entry = ttk.Entry(self, textvariable=self.ga_latent_dim_var, width=8, state='readonly')
         self.ga_latent_dim_entry.grid(row=4, column=1, sticky="w", padx=(5, 0), pady=2)
-        self.create_tooltip(self.ga_latent_dim_entry, _("Latent vector dimension for GA"))
+        self.create_tooltip(self.ga_latent_dim_entry, _( "Latent vector dimension for GA (fixed at 512 for this model)"))
+
+        # Mood selection dropdown
+        ttk.Label(self, text=_("Target Mood:")).grid(row=5, column=0, sticky="w", pady=2)
+        self.mood_var = tk.StringVar(value='calm')
+        self.mood_dropdown = ttk.OptionMenu(
+            self,
+            self.mood_var,
+            'calm',
+            'calm', 'excited', 'tense', 'neutral'
+        )
+        self.mood_dropdown.grid(row=5, column=1, sticky="w", padx=(5, 0), pady=2)
+        self.create_tooltip(self.mood_dropdown, _("Select the target mood for music generation"))
         
         # Volume control
         ttk.Label(self, text=_("Volume:")).grid(row=1, column=0, sticky="w", pady=2)
@@ -304,6 +316,9 @@ class SettingsFrame(ttk.LabelFrame, TooltipMixin):
 
     def get_latent_dim(self) -> int:
         return self.ga_latent_dim_var.get()
+
+    def get_mood(self) -> str:
+        return self.mood_var.get()
 
 
 class PlaybackControlsFrame(tk.Frame):
