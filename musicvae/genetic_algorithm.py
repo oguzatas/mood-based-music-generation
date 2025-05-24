@@ -50,14 +50,28 @@ class MusicGeneticAlgorithm(GeneticAlgorithm):
 
     def fitness_fn(self, individual: LatentVectorIndividual) -> float:
         output_path = self.output_dir / f"music_gen_{self.generation}_{id(individual)}.mid"
-        self.music_generator.generate(individual.vector, output_path)
         try:
-            midi = pretty_midi.PrettyMIDI(str(output_path))
-            tempo = midi.estimate_tempo()
-        except Exception:
-            tempo = 0  # Penalize if MIDI can't be parsed
-        fitness = -abs(tempo - self.target_tempo)
-        return fitness
+            self.music_generator.logger.info(f"GA: Generating for individual {id(individual)}")
+            result = self.music_generator.generate(individual.vector, output_path)
+            self.music_generator.logger.info(f"GA: Generation result: {result}")
+            midi_path = result.get('midi_path') or result.get('output_path')
+            if not midi_path or not Path(midi_path).exists():
+                self.music_generator.logger.error("GA: MIDI file not created.")
+                return -9999  # Penalize
+            try:
+                self.music_generator.logger.info(f"GA: Analyzing MIDI {midi_path}")
+                midi = pretty_midi.PrettyMIDI(str(midi_path))
+                tempo = midi.estimate_tempo()
+                self.music_generator.logger.info(f"GA: Estimated tempo: {tempo}")
+            except Exception as e:
+                self.music_generator.logger.error(f"GA: pretty_midi failed: {e}")
+                tempo = 0
+            fitness = -abs(tempo - self.target_tempo)
+            self.music_generator.logger.info(f"GA: Fitness for individual {id(individual)}: {fitness}")
+            return fitness
+        except Exception as e:
+            self.music_generator.logger.error(f"GA: Exception in fitness_fn: {e}")
+            return -9999
 
     def run(self, generations: int):
         for gen in range(generations):

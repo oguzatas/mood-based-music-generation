@@ -50,9 +50,13 @@ class MusicVAEWrapper:
             '-q'
         ]
         try:
-            subprocess.run(fs_cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            self.logger.info(f"Converted to WAV: {wav_path}")
+            self.logger.info(f"GA: Converting MIDI to WAV with FluidSynth: {' '.join(map(str, fs_cmd))}")
+            subprocess.run(fs_cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=30)
+            self.logger.info(f"GA: FluidSynth conversion complete: {wav_path}")
+        except subprocess.TimeoutExpired:
+            self.logger.error("GA: FluidSynth conversion timed out!")
+            return {'midi_path': str(midi_path), 'wav_path': None, 'error': 'FluidSynth timeout'}
         except subprocess.CalledProcessError as e:
-            self.logger.error(f"FluidSynth conversion failed: {e.stderr.decode() if e.stderr else e}")
+            self.logger.error(f"GA: FluidSynth conversion failed: {e.stderr.decode() if e.stderr else e}")
             return {'midi_path': str(midi_path), 'wav_path': None, 'error': str(e)}
         return {'midi_path': str(midi_path), 'wav_path': str(wav_path)} 
