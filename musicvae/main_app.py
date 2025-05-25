@@ -19,6 +19,7 @@ from ui_components import (
     LogTextWidget, FileListWidget, ProgressFrame, 
     SettingsFrame, PlaybackControlsFrame
 )
+from llm_config import LLM_CONFIG
 
 
 class MusicGeneratorApp:
@@ -79,6 +80,25 @@ class MusicGeneratorApp:
         self.settings_frame.set_num_outputs(self.config.default_outputs)
         self.settings_frame.set_volume(self.config.default_volume / 100)
         
+        # Evaluator combobox: populate with music21 + LLMs that have API keys
+        evaluators = ['music21']
+        disabled_llms = []
+        for llm_name, cfg in LLM_CONFIG.items():
+            api_key = cfg.get('api_key')
+            if api_key or llm_name == 'ollama':  # Ollama may not need an API key
+                evaluators.append(llm_name)
+            else:
+                disabled_llms.append(llm_name)
+        self.settings_frame.evaluator_combobox['values'] = evaluators + disabled_llms
+        self.settings_frame.evaluator_var.set('music21')
+        # Add tooltip for disabled LLMs
+        if disabled_llms:
+            disabled_str = ', '.join(disabled_llms)
+            self.settings_frame.create_tooltip(
+                self.settings_frame.evaluator_combobox,
+                _(f"LLMs without API keys are disabled: {disabled_str}")
+            )
+        
         # Control buttons section
         self.setup_control_buttons(main_frame)
         
@@ -99,6 +119,14 @@ class MusicGeneratorApp:
         
         # Log section
         self.setup_log_section(main_frame)
+        
+        # Bind evaluator selection to warn if disabled LLM is selected
+        def on_evaluator_change(*args):
+            selected = self.settings_frame.get_evaluator()
+            if selected in disabled_llms:
+                self.log_widget.log_message(f"Warning: {selected} is disabled because no API key is set.", "WARNING")
+                self.settings_frame.evaluator_var.set('music21')
+        self.settings_frame.evaluator_var.trace('w', on_evaluator_change)
     
     def setup_control_buttons(self, parent: tk.Widget) -> None:
         """Set up the main control buttons"""
@@ -434,23 +462,46 @@ class MusicGeneratorApp:
                 except Exception as e:
                     self.log_widget.log_message(f"Failed to delete {f}: {e}", "WARNING")
 
+        evaluator = self.settings_frame.get_evaluator()
+
         def ga_worker():
-            self.log_widget.log_message(f"Starting Genetic Algorithm music generation for mood: {target_mood}...")
+            self.log_widget.log_message(f"Starting Genetic Algorithm music generation for mood: {target_mood} (Evaluator: {evaluator})...")
             music_generator = MusicVAEWrapper()
             ga = MusicGeneticAlgorithm(
                 population_size, latent_dim, music_generator, output_dir,
-                target_mood=target_mood, target_bpm=target_bpm, target_variability=target_variability
+                target_mood=target_mood, target_bpm=target_bpm, target_variability=target_variability,
+                llm_names=[evaluator]
             )
+            abort_due_to_llm_error = False
             for gen in range(generations):
                 ga.generation = gen
-                self.root.after(0, lambda g=gen: self.log_widget.log_message(f"GA Generation {g+1}/{generations}"))
+                self.root.after(0, lambda g=gen: self.log_widget.log_message(f"GA Generation {g+1}/{generations} (Evaluator: {evaluator})"))
                 ga.evaluate(ga.fitness_fn)
                 best = max(ga.population, key=lambda ind: ind.fitness)
                 self.root.after(0, lambda b=best: self.log_widget.log_message(f"  Best fitness: {b.fitness:.4f}"))
                 selected = ga.select()
                 ga.reproduce(selected)
-            self.root.after(0, lambda: self.log_widget.log_message("GA music generation complete."))
-            self.root.after(0, self.refresh_file_list)
+                # Check for LLM API error in all individuals
+                if evaluator != 'music21':
+                    all_errors = all(
+                        hasattr(ind, 'fitness') and ind.fitness == 5 and
+                        'LLM API error' in str(getattr(ind, 'suggestions', ''))
+                        for ind in ga.population
+                    )
+                    if all_errors:
+                        abort_due_to_llm_error = True
+                        break
+            if abort_due_to_llm_error:
+                self.root.after(0, lambda: messagebox.showerror(
+                    "LLM API Error",
+                    f"All LLM evaluations failed due to API error or connection issue.\n\nPlease check your API key and network connection.\n\nThe GA run has been aborted. You may want to switch to 'music21' as the evaluator."
+                ))
+                self.root.after(0, lambda: self.log_widget.log_message(
+                    "GA aborted: All LLM evaluations failed due to API error.", "ERROR"
+                ))
+            else:
+                self.root.after(0, lambda: self.log_widget.log_message("GA music generation complete."))
+                self.root.after(0, self.refresh_file_list)
             self.root.after(0, lambda: self.set_generation_state(False))
 
         self.set_generation_state(True)

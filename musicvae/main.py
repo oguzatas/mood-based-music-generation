@@ -29,6 +29,10 @@ import sys
 import os
 import logging
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from .env before anything else
+load_dotenv()
 
 # Add the current directory to Python path to ensure imports work
 current_dir = Path(__file__).parent

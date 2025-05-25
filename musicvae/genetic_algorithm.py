@@ -169,35 +169,19 @@ class MusicGeneticAlgorithm(GeneticAlgorithm):
             if not midi_path or not Path(midi_path).exists():
                 self.music_generator.logger.error("GA: MIDI file not created.")
                 return -9999  # Penalize
-            try:
-                self.music_generator.logger.info(f"GA: Analyzing MIDI {midi_path}")
-                midi = pretty_midi.PrettyMIDI(str(midi_path))
-                tempo = midi.estimate_tempo()
-                note_density = sum(len(inst.notes) for inst in midi.instruments) / midi.get_end_time() if midi.get_end_time() > 0 else 0
-                self.music_generator.logger.info(f"GA: Estimated tempo: {tempo}, note_density: {note_density}")
-            except Exception as e:
-                self.music_generator.logger.error(f"GA: pretty_midi failed: {e}")
-                tempo, note_density = 0, 0
-            # Use heartbeat-driven targets if provided
-            target_bpm = self.target_bpm if self.target_bpm is not None else self.target_tempo
-            target_var = self.target_variability if self.target_variability is not None else note_density
-            tempo_score = -abs(tempo - target_bpm)
-            density_score = -abs(note_density - target_var)
-            # --- Multi-LLM integration ---
+            # --- Evaluator selection ---
+            evaluator = self.llm_names[0] if self.llm_names else 'music21'
             prompt = self.prepare_llm_prompt(midi_path)
-            llm_feedbacks = {}
-            for llm_name in self.llm_names:
-                if llm_name == 'music21':
-                    feedback = self.get_llm_feedback(prompt, llm_name, midi_path=midi_path)
-                else:
-                    feedback = self.get_llm_feedback(prompt, llm_name)
-                llm_feedbacks[llm_name] = feedback
-                self.store_llm_feedback(self.generation, id(individual), llm_name, feedback)
-            llm_score = self.aggregate_llm_scores(llm_feedbacks)
-            # Combine LLM score with feature-based fitness (weighted sum)
-            fitness = 0.5 * (tempo_score + 0.5 * density_score) + 0.5 * (llm_score - 5)  # Center LLM score at 0
-            self.music_generator.logger.info(f"GA: Fitness for individual {id(individual)}: {fitness} (tempo_score={tempo_score}, density_score={density_score}, llm_score={llm_score}, llm_feedbacks={llm_feedbacks})")
-            return fitness
+            if evaluator == 'music21':
+                feedback = self.get_llm_feedback(prompt, 'music21', midi_path=midi_path)
+                score = feedback.get('score', 5)
+                self.music_generator.logger.info(f"GA: music21 fitness for individual {id(individual)}: {score}")
+                return score
+            else:
+                feedback = self.get_llm_feedback(prompt, evaluator)
+                score = feedback.get('score', 5)
+                self.music_generator.logger.info(f"GA: {evaluator} fitness for individual {id(individual)}: {score}")
+                return score
         except Exception as e:
             self.music_generator.logger.error(f"GA: Exception in fitness_fn: {e}")
             return -9999

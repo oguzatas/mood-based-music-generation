@@ -291,6 +291,20 @@ class SettingsFrame(ttk.LabelFrame, TooltipMixin):
         # Bind volume change
         self.volume_var.trace('w', self._on_volume_change)
         
+        # Evaluator selection combobox
+        ttk.Label(self, text=_("Evaluator:")).grid(row=7, column=0, sticky="w", pady=2)
+        self.evaluator_var = tk.StringVar(value='music21')
+        # The list of evaluators will be set externally (from main_app)
+        self.evaluator_combobox = ttk.Combobox(
+            self,
+            textvariable=self.evaluator_var,
+            state='readonly',
+            width=20
+        )
+        self.evaluator_combobox['values'] = ['music21']  # Will be updated in main_app
+        self.evaluator_combobox.grid(row=7, column=1, sticky="w", padx=(5, 0), pady=2)
+        self.create_tooltip(self.evaluator_combobox, _( "Select the evaluator for fitness (music21 or LLM)"))
+        
         # Configure column weights
         self.columnconfigure(1, weight=1)
     
@@ -343,6 +357,10 @@ class SettingsFrame(ttk.LabelFrame, TooltipMixin):
             return [float(p) for p in parts]
         except Exception:
             return []
+
+    def get_evaluator(self) -> str:
+        """Get the selected evaluator (music21 or LLM name)"""
+        return self.evaluator_var.get()
 
 
 class PlaybackControlsFrame(tk.Frame):
