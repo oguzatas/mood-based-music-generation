@@ -882,3 +882,314 @@ Instructions for updating:
 2025-05-24 22:50:06,157 - audio_player - INFO - Started playing: music_gen_1_2663005078624.mid
 2025-05-24 22:50:55,497 - audio_player - INFO - Playback stopped
 2025-05-24 22:50:57,140 - audio_player - INFO - Started playing: music_gen_1_2663005078720.mid
+2025-05-24 23:47:58,394 - audio_player - INFO - Playback stopped
+2025-05-24 23:47:58,396 - audio_player - INFO - Playback stopped
+2025-05-24 23:47:58,449 - audio_player - INFO - Audio player cleaned up
+2025-05-24 23:47:58,453 - __main__ - INFO - Application shutdown complete
+2025-05-25 15:43:24,187 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-25 15:43:27,498 - __main__ - INFO - ✓ tensorflow available
+2025-05-25 15:43:36,935 - __main__ - INFO - ✓ magenta available
+2025-05-25 15:43:36,935 - __main__ - INFO - Loading main application...
+2025-05-25 15:43:36,940 - __main__ - INFO - Starting GUI application...
+2025-05-25 15:43:37,020 - localization - INFO - Language set to English (default)
+2025-05-25 15:43:37,098 - audio_player - INFO - Audio player initialized successfully
+2025-05-25 15:44:25,869 - tensorflow - INFO - Building MusicVAE model with BidirectionalLstmEncoder, HierarchicalLstmDecoder, and hparams:
+{'max_seq_len': 256, 'z_size': 512, 'free_bits': 256, 'max_beta': 0.2, 'beta_rate': 0.0, 'batch_size': 1, 'grad_clip': 1.0, 'clip_mode': 'global_norm', 'grad_norm_clip_to_zero': 10000, 'learning_rate': 0.001, 'decay_rate': 0.9999, 'min_learning_rate': 1e-05, 'conditional': True, 'dec_rnn_size': [1024, 1024], 'enc_rnn_size': [2048, 2048], 'dropout_keep_prob': 1.0, 'sampling_schedule': 'constant', 'sampling_rate': 0.0, 'use_cudnn': False, 'residual_encoder': False, 'residual_decoder': False, 'control_preprocessing_rnn_size': [256]}
+2025-05-25 15:44:25,881 - tensorflow - INFO - 
+Encoder Cells (bidirectional):
+  units: [2048, 2048]
+
+2025-05-25 15:44:25,886 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 15:44:25,889 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 15:44:25,893 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 15:44:25,897 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 15:44:25,898 - tensorflow - INFO - 
+Hierarchical Decoder:
+  input length: 256
+  level output lengths: [16, 16]
+
+2025-05-25 15:44:25,905 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 15:44:25,912 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 15:44:25,912 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 15:44:25,919 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 15:44:25,920 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 15:44:25,927 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 15:44:25,927 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 15:44:25,934 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 15:44:29,261 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\util\dispatch.py:1082: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+2025-05-25 15:44:29,261 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\magenta\contrib\rnn.py:464: bidirectional_dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.Bidirectional(keras.layers.RNN(cell))`, which is equivalent to this API
+2025-05-25 15:44:29,262 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\ops\rnn.py:437: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+2025-05-25 15:44:29,402 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow_probability\python\distributions\distribution.py:342: calling MultivariateNormalDiag.__init__ (from tensorflow_probability.python.distributions.mvn_diag) with scale_identity_multiplier is deprecated and will be removed after 2020-01-01.
+Instructions for updating:
+`scale_identity_multiplier` is deprecated; please combine it into `scale_diag` directly instead.
+2025-05-25 15:44:29,446 - tensorflow - INFO - Restoring parameters from C:/Users/oguzh/magenta_musicgen/models/hierdec-trio_16bar/hierdec-trio_16bar.ckpt
+2025-05-25 15:44:30,690 - musicvae_wrapper - INFO - GA: Generating for individual 1542071261120
+2025-05-25 15:44:33,079 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_1542071261120.mid
+2025-05-25 15:44:33,079 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_1542071261120.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_1542071261120.wav -r 44100 -q
+2025-05-25 15:45:03,088 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 15:45:03,089 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_1542071261120.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 15:45:03,091 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_1542071261120.mid
+2025-05-25 15:45:03,099 - musicvae_wrapper - INFO - GA: Estimated tempo: 219.99999999999997, note_density: 9.9375
+2025-05-25 15:45:03,099 - musicvae_wrapper - INFO - GA: Fitness for individual 1542071261120: -158.28541666666663 (tempo_score=-153.33333333333331, density_score=-9.904166666666667)
+2025-05-25 15:45:03,099 - musicvae_wrapper - INFO - GA: Generating for individual 1541248361280
+2025-05-25 15:45:04,204 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_1541248361280.mid
+2025-05-25 15:45:04,204 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_1541248361280.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_1541248361280.wav -r 44100 -q
+2025-05-25 15:45:34,216 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 15:45:34,217 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_1541248361280.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 15:45:34,218 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_1541248361280.mid
+2025-05-25 15:45:34,225 - musicvae_wrapper - INFO - GA: Estimated tempo: 234.76635514018736, note_density: 11.670588235294117
+2025-05-25 15:45:34,225 - musicvae_wrapper - INFO - GA: Fitness for individual 1541248361280: -173.9183159245011 (tempo_score=-168.0996884735207, density_score=-11.637254901960784)
+2025-05-25 15:45:34,226 - musicvae_wrapper - INFO - GA: Generating for individual 1541248361472
+2025-05-25 15:45:35,324 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_1541248361472.mid
+2025-05-25 15:45:35,324 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: fluidsynth -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_1541248361472.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_1541248361472.wav -r 44100 -q
+2025-05-25 15:46:05,334 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 15:46:05,335 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_1541248361472.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 15:46:05,335 - musicvae_wrapper - INFO - GA: Analyzing MIDI C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_1541248361472.mid
+2025-05-25 15:46:05,342 - musicvae_wrapper - INFO - GA: Estimated tempo: 227.44186046511626, note_density: 13.4375
+2025-05-25 15:46:05,342 - musicvae_wrapper - INFO - GA: Fitness for individual 1541248361472: -167.47727713178293 (tempo_score=-160.7751937984496, density_score=-13.404166666666667)
+2025-05-25 16:40:06,809 - audio_player - INFO - Playback stopped
+2025-05-25 16:40:06,809 - audio_player - INFO - Playback stopped
+2025-05-25 16:40:06,893 - audio_player - INFO - Audio player cleaned up
+2025-05-25 16:40:06,893 - __main__ - INFO - Application shutdown complete
+2025-05-25 21:01:59,208 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-25 21:02:01,625 - __main__ - INFO - ✓ tensorflow available
+2025-05-25 21:02:10,495 - __main__ - INFO - ✓ magenta available
+2025-05-25 21:02:10,495 - __main__ - INFO - Loading main application...
+2025-05-25 21:02:10,508 - __main__ - INFO - Starting GUI application...
+2025-05-25 21:02:10,547 - localization - INFO - Language set to English (default)
+2025-05-25 21:02:10,615 - audio_player - INFO - Audio player initialized successfully
+2025-05-25 21:02:31,267 - audio_player - INFO - Playback stopped
+2025-05-25 21:02:31,267 - audio_player - INFO - Playback stopped
+2025-05-25 21:02:31,306 - audio_player - INFO - Audio player cleaned up
+2025-05-25 21:02:31,306 - __main__ - INFO - Application shutdown complete
+2025-05-25 21:04:48,452 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-25 21:04:50,841 - __main__ - INFO - ✓ tensorflow available
+2025-05-25 21:05:03,725 - __main__ - INFO - ✓ magenta available
+2025-05-25 21:05:03,730 - __main__ - INFO - Loading main application...
+2025-05-25 21:05:03,735 - __main__ - INFO - Starting GUI application...
+2025-05-25 21:05:03,794 - localization - INFO - Language set to English (default)
+2025-05-25 21:05:03,867 - audio_player - INFO - Audio player initialized successfully
+2025-05-25 21:05:21,564 - tensorflow - INFO - Building MusicVAE model with BidirectionalLstmEncoder, HierarchicalLstmDecoder, and hparams:
+{'max_seq_len': 256, 'z_size': 512, 'free_bits': 256, 'max_beta': 0.2, 'beta_rate': 0.0, 'batch_size': 1, 'grad_clip': 1.0, 'clip_mode': 'global_norm', 'grad_norm_clip_to_zero': 10000, 'learning_rate': 0.001, 'decay_rate': 0.9999, 'min_learning_rate': 1e-05, 'conditional': True, 'dec_rnn_size': [1024, 1024], 'enc_rnn_size': [2048, 2048], 'dropout_keep_prob': 1.0, 'sampling_schedule': 'constant', 'sampling_rate': 0.0, 'use_cudnn': False, 'residual_encoder': False, 'residual_decoder': False, 'control_preprocessing_rnn_size': [256]}
+2025-05-25 21:05:21,566 - tensorflow - INFO - 
+Encoder Cells (bidirectional):
+  units: [2048, 2048]
+
+2025-05-25 21:05:21,571 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:05:21,575 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:05:21,579 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:05:21,584 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:05:21,584 - tensorflow - INFO - 
+Hierarchical Decoder:
+  input length: 256
+  level output lengths: [16, 16]
+
+2025-05-25 21:05:21,591 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:05:21,598 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:05:21,598 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 21:05:21,607 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:05:21,607 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 21:05:21,614 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:05:21,614 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 21:05:21,623 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:05:24,937 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\util\dispatch.py:1082: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+2025-05-25 21:05:24,938 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\magenta\contrib\rnn.py:464: bidirectional_dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.Bidirectional(keras.layers.RNN(cell))`, which is equivalent to this API
+2025-05-25 21:05:24,940 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\ops\rnn.py:437: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+2025-05-25 21:05:25,081 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow_probability\python\distributions\distribution.py:342: calling MultivariateNormalDiag.__init__ (from tensorflow_probability.python.distributions.mvn_diag) with scale_identity_multiplier is deprecated and will be removed after 2020-01-01.
+Instructions for updating:
+`scale_identity_multiplier` is deprecated; please combine it into `scale_diag` directly instead.
+2025-05-25 21:10:11,659 - audio_player - INFO - Playback stopped
+2025-05-25 21:10:11,659 - audio_player - INFO - Playback stopped
+2025-05-25 21:10:11,750 - audio_player - INFO - Audio player cleaned up
+2025-05-25 21:10:11,750 - __main__ - INFO - Application shutdown complete
+2025-05-25 21:10:17,185 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-25 21:10:19,452 - __main__ - INFO - ✓ tensorflow available
+2025-05-25 21:10:28,774 - __main__ - INFO - ✓ magenta available
+2025-05-25 21:10:28,774 - __main__ - INFO - Loading main application...
+2025-05-25 21:10:28,778 - __main__ - INFO - Starting GUI application...
+2025-05-25 21:10:28,824 - localization - INFO - Language set to English (default)
+2025-05-25 21:10:28,925 - audio_player - INFO - Audio player initialized successfully
+2025-05-25 21:10:44,348 - tensorflow - INFO - Building MusicVAE model with BidirectionalLstmEncoder, HierarchicalLstmDecoder, and hparams:
+{'max_seq_len': 256, 'z_size': 512, 'free_bits': 256, 'max_beta': 0.2, 'beta_rate': 0.0, 'batch_size': 1, 'grad_clip': 1.0, 'clip_mode': 'global_norm', 'grad_norm_clip_to_zero': 10000, 'learning_rate': 0.001, 'decay_rate': 0.9999, 'min_learning_rate': 1e-05, 'conditional': True, 'dec_rnn_size': [1024, 1024], 'enc_rnn_size': [2048, 2048], 'dropout_keep_prob': 1.0, 'sampling_schedule': 'constant', 'sampling_rate': 0.0, 'use_cudnn': False, 'residual_encoder': False, 'residual_decoder': False, 'control_preprocessing_rnn_size': [256]}
+2025-05-25 21:10:44,351 - tensorflow - INFO - 
+Encoder Cells (bidirectional):
+  units: [2048, 2048]
+
+2025-05-25 21:10:44,355 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:10:44,359 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:10:44,362 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:10:44,366 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:10:44,366 - tensorflow - INFO - 
+Hierarchical Decoder:
+  input length: 256
+  level output lengths: [16, 16]
+
+2025-05-25 21:10:44,373 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:10:44,381 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:10:44,382 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 21:10:44,389 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:10:44,389 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 21:10:44,397 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:10:44,398 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 21:10:44,405 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:10:47,687 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\util\dispatch.py:1082: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+2025-05-25 21:10:47,688 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\magenta\contrib\rnn.py:464: bidirectional_dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.Bidirectional(keras.layers.RNN(cell))`, which is equivalent to this API
+2025-05-25 21:10:47,688 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\ops\rnn.py:437: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+2025-05-25 21:10:47,833 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow_probability\python\distributions\distribution.py:342: calling MultivariateNormalDiag.__init__ (from tensorflow_probability.python.distributions.mvn_diag) with scale_identity_multiplier is deprecated and will be removed after 2020-01-01.
+Instructions for updating:
+`scale_identity_multiplier` is deprecated; please combine it into `scale_diag` directly instead.
+2025-05-25 21:11:02,608 - audio_player - INFO - Playback stopped
+2025-05-25 21:11:02,608 - audio_player - INFO - Playback stopped
+2025-05-25 21:11:02,666 - audio_player - INFO - Audio player cleaned up
+2025-05-25 21:11:02,666 - __main__ - INFO - Application shutdown complete
+2025-05-25 21:12:03,912 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-25 21:12:06,122 - __main__ - INFO - ✓ tensorflow available
+2025-05-25 21:12:16,988 - __main__ - INFO - ✓ magenta available
+2025-05-25 21:12:16,988 - __main__ - INFO - Loading main application...
+2025-05-25 21:12:16,992 - __main__ - INFO - Starting GUI application...
+2025-05-25 21:12:17,032 - localization - INFO - Language set to English (default)
+2025-05-25 21:12:17,163 - audio_player - INFO - Audio player initialized successfully
+2025-05-25 21:12:24,124 - tensorflow - INFO - Building MusicVAE model with BidirectionalLstmEncoder, HierarchicalLstmDecoder, and hparams:
+{'max_seq_len': 256, 'z_size': 512, 'free_bits': 256, 'max_beta': 0.2, 'beta_rate': 0.0, 'batch_size': 1, 'grad_clip': 1.0, 'clip_mode': 'global_norm', 'grad_norm_clip_to_zero': 10000, 'learning_rate': 0.001, 'decay_rate': 0.9999, 'min_learning_rate': 1e-05, 'conditional': True, 'dec_rnn_size': [1024, 1024], 'enc_rnn_size': [2048, 2048], 'dropout_keep_prob': 1.0, 'sampling_schedule': 'constant', 'sampling_rate': 0.0, 'use_cudnn': False, 'residual_encoder': False, 'residual_decoder': False, 'control_preprocessing_rnn_size': [256]}
+2025-05-25 21:12:24,127 - tensorflow - INFO - 
+Encoder Cells (bidirectional):
+  units: [2048, 2048]
+
+2025-05-25 21:12:24,131 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:12:24,136 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:12:24,140 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:12:24,144 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:12:24,145 - tensorflow - INFO - 
+Hierarchical Decoder:
+  input length: 256
+  level output lengths: [16, 16]
+
+2025-05-25 21:12:24,151 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:12:24,158 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:12:24,159 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 21:12:24,167 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:12:24,167 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 21:12:24,175 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:12:24,175 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 21:12:24,183 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:12:27,402 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\util\dispatch.py:1082: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+2025-05-25 21:12:27,402 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\magenta\contrib\rnn.py:464: bidirectional_dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.Bidirectional(keras.layers.RNN(cell))`, which is equivalent to this API
+2025-05-25 21:12:27,404 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\ops\rnn.py:437: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+2025-05-25 21:12:27,543 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow_probability\python\distributions\distribution.py:342: calling MultivariateNormalDiag.__init__ (from tensorflow_probability.python.distributions.mvn_diag) with scale_identity_multiplier is deprecated and will be removed after 2020-01-01.
+Instructions for updating:
+`scale_identity_multiplier` is deprecated; please combine it into `scale_diag` directly instead.
+2025-05-25 21:14:31,507 - audio_player - INFO - Playback stopped
+2025-05-25 21:14:31,507 - audio_player - INFO - Playback stopped
+2025-05-25 21:14:31,546 - audio_player - INFO - Audio player cleaned up
+2025-05-25 21:14:31,546 - __main__ - INFO - Application shutdown complete
+2025-05-25 21:14:33,699 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-25 21:14:35,879 - __main__ - INFO - ✓ tensorflow available
+2025-05-25 21:14:44,551 - __main__ - INFO - ✓ magenta available
+2025-05-25 21:14:44,551 - __main__ - INFO - Loading main application...
+2025-05-25 21:14:44,555 - __main__ - INFO - Starting GUI application...
+2025-05-25 21:14:44,592 - localization - INFO - Language set to English (default)
+2025-05-25 21:14:44,686 - audio_player - INFO - Audio player initialized successfully
+2025-05-25 21:14:47,421 - tensorflow - INFO - Building MusicVAE model with BidirectionalLstmEncoder, HierarchicalLstmDecoder, and hparams:
+{'max_seq_len': 256, 'z_size': 512, 'free_bits': 256, 'max_beta': 0.2, 'beta_rate': 0.0, 'batch_size': 1, 'grad_clip': 1.0, 'clip_mode': 'global_norm', 'grad_norm_clip_to_zero': 10000, 'learning_rate': 0.001, 'decay_rate': 0.9999, 'min_learning_rate': 1e-05, 'conditional': True, 'dec_rnn_size': [1024, 1024], 'enc_rnn_size': [2048, 2048], 'dropout_keep_prob': 1.0, 'sampling_schedule': 'constant', 'sampling_rate': 0.0, 'use_cudnn': False, 'residual_encoder': False, 'residual_decoder': False, 'control_preprocessing_rnn_size': [256]}
+2025-05-25 21:14:47,424 - tensorflow - INFO - 
+Encoder Cells (bidirectional):
+  units: [2048, 2048]
+
+2025-05-25 21:14:47,428 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:14:47,432 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:14:47,435 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:14:47,438 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:14:47,438 - tensorflow - INFO - 
+Hierarchical Decoder:
+  input length: 256
+  level output lengths: [16, 16]
+
+2025-05-25 21:14:47,446 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:14:47,453 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:14:47,453 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 21:14:47,461 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:14:47,461 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 21:14:47,468 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:14:47,468 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 21:14:47,475 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 21:14:50,709 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\util\dispatch.py:1082: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+2025-05-25 21:14:50,709 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\magenta\contrib\rnn.py:464: bidirectional_dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.Bidirectional(keras.layers.RNN(cell))`, which is equivalent to this API
+2025-05-25 21:14:50,710 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\ops\rnn.py:437: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+2025-05-25 21:14:50,865 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow_probability\python\distributions\distribution.py:342: calling MultivariateNormalDiag.__init__ (from tensorflow_probability.python.distributions.mvn_diag) with scale_identity_multiplier is deprecated and will be removed after 2020-01-01.
+Instructions for updating:
+`scale_identity_multiplier` is deprecated; please combine it into `scale_diag` directly instead.

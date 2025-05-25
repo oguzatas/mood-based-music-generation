@@ -49,3 +49,12 @@ pydub>=0.25.0
 # - NVIDIA GPU with CUDA Compute Capability 3.5 or higher
 # - CUDA Toolkit 11.2 or higher
 # - cuDNN 8.1.0 or higher
+
+# For environment variable management
+python-dotenv>=1.0.0
+
+# For LLM API calls
+requests>=2.25.0
+
+# For symbolic music analysis and LLM prompt preparation
+music21>=6.1.0

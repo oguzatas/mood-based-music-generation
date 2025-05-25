@@ -3,14 +3,15 @@ from pathlib import Path
 from typing import Any
 import subprocess
 import logging
+import os
 
 class MusicVAEWrapper:
     """Encapsulates music generation from a latent vector using Magenta Python API and converts to WAV."""
-    def __init__(self, checkpoint_path: str = None, config_name: str = 'hierdec-trio_16bar', fluidsynth_path: str = None, soundfont_path: str = None):
-        self.checkpoint_path = checkpoint_path or 'C:/Users/oguzh/magenta_musicgen/models/hierdec-trio_16bar/hierdec-trio_16bar.ckpt'
-        self.config_name = config_name
-        self.fluidsynth_path = fluidsynth_path or 'fluidsynth'
-        self.soundfont_path = soundfont_path or 'soundfonts/FluidR3_GM.sf2'
+    def __init__(self, checkpoint_path: str = None, config_name: str = None, fluidsynth_path: str = None, soundfont_path: str = None):
+        self.checkpoint_path = checkpoint_path or os.environ.get('CHECKPOINT_PATH', 'models/hierdec-trio_16bar.ckpt')
+        self.config_name = config_name or os.environ.get('CONFIG_NAME', 'hierdec-trio_16bar')
+        self.fluidsynth_path = fluidsynth_path or os.environ.get('FLUIDSYNTH_PATH', 'fluidsynth')
+        self.soundfont_path = soundfont_path or os.environ.get('SOUNDFONT_PATH', 'soundfonts/FluidR3_GM.sf2')
         self.logger = logging.getLogger(__name__)
         # Import Magenta model and note_seq
         from magenta.models.music_vae.trained_model import TrainedModel

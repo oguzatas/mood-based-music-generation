@@ -6,6 +6,7 @@ import gettext
 import logging
 from pathlib import Path
 from typing import Optional, Callable
+import os
 
 
 class LocalizationManager:
@@ -187,26 +188,15 @@ class LocalizationManager:
 _localization_manager: Optional[LocalizationManager] = None
 
 
-def init_localization(language: str = 'en', 
-                     domain: str = 'musicvae', 
-                     locale_dir: Optional[Path] = None) -> LocalizationManager:
+def init_localization(language: str = None, domain: str = 'musicvae', locale_dir: Optional[Path] = None) -> LocalizationManager:
     """
     Initialize the global localization manager
-    
-    Args:
-        language: Initial language code
-        domain: Translation domain name
-        locale_dir: Directory containing locale files
-        
-    Returns:
-        LocalizationManager: The initialized localization manager
     """
     global _localization_manager
-    
+    lang = language or os.environ.get('LANGUAGE', 'en')
     _localization_manager = LocalizationManager(domain, locale_dir)
-    _localization_manager.set_language(language)
+    _localization_manager.set_language(lang)
     _localization_manager.install_global_function()
-    
     return _localization_manager
 
 

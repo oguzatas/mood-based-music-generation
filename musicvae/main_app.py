@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Optional, List
 import glob
 import os
+import numpy as np
 
 from config import AppConfig
 from music_generator import MusicVAEGenerator
@@ -415,6 +416,16 @@ class MusicGeneratorApp:
         output_dir = self.config.output_dir
         output_dir.mkdir(exist_ok=True)
 
+        # Get heartbeat RR intervals from UI
+        rr_intervals = self.settings_frame.get_heartbeat_rr_intervals()
+        target_bpm = None
+        target_variability = None
+        if rr_intervals:
+            mean_rr = np.mean(rr_intervals)
+            std_rr = np.std(rr_intervals)
+            target_bpm = 60000 / mean_rr
+            target_variability = std_rr / mean_rr  # normalized variability
+
         # Clean output directory before generation
         for ext in ("*.mid", "*.wav", "*.txt"):
             for f in output_dir.glob(ext):
@@ -426,7 +437,10 @@ class MusicGeneratorApp:
         def ga_worker():
             self.log_widget.log_message(f"Starting Genetic Algorithm music generation for mood: {target_mood}...")
             music_generator = MusicVAEWrapper()
-            ga = MusicGeneticAlgorithm(population_size, latent_dim, music_generator, output_dir, target_mood=target_mood)
+            ga = MusicGeneticAlgorithm(
+                population_size, latent_dim, music_generator, output_dir,
+                target_mood=target_mood, target_bpm=target_bpm, target_variability=target_variability
+            )
             for gen in range(generations):
                 ga.generation = gen
                 self.root.after(0, lambda g=gen: self.log_widget.log_message(f"GA Generation {g+1}/{generations}"))

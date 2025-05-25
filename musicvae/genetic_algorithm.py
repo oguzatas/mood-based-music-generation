@@ -4,6 +4,11 @@ from pathlib import Path
 from latent_vector_individual import LatentVectorIndividual
 from musicvae_wrapper import MusicVAEWrapper
 import pretty_midi
+from music_analysis import midi_to_symbolic_text, prepare_llm_prompt_from_midi, analyze_midi_with_music21
+import json
+import requests
+from llm_config import get_llm_config
+import os
 
 class GeneticAlgorithm:
     def __init__(self, population_size: int, latent_dim: int):
@@ -40,13 +45,119 @@ def mood_to_target_tempo(mood: str) -> float:
     }.get(mood, 90)
 
 class MusicGeneticAlgorithm(GeneticAlgorithm):
-    def __init__(self, population_size: int, latent_dim: int, music_generator: MusicVAEWrapper, output_dir: Path, target_mood: str = 'calm'):
+    def __init__(self, population_size: int, latent_dim: int, music_generator: MusicVAEWrapper, output_dir: Path, target_mood: str = 'calm', target_bpm: float = None, target_variability: float = None, llm_names: list = None, llm_feedback_dir: Path = None):
         super().__init__(population_size, latent_dim)
         self.music_generator = music_generator
         self.output_dir = output_dir
         self.generation = 0
         self.target_mood = target_mood
         self.target_tempo = mood_to_target_tempo(target_mood)
+        self.target_bpm = target_bpm
+        self.target_variability = target_variability
+        self.llm_names = llm_names or ['openai', 'gemini']
+        self.llm_feedback_dir = llm_feedback_dir or (output_dir / 'llm_feedbacks')
+        self.llm_feedback_dir.mkdir(exist_ok=True, parents=True)
+        self.llm_feedbacks = {}  # {(gen, individual_id): {llm_name: feedback_dict}}
+
+    def prepare_llm_prompt(self, midi_path: Path) -> str:
+        return prepare_llm_prompt_from_midi(
+            midi_path,
+            self.target_mood,
+            self.target_bpm or self.target_tempo,
+            self.target_variability
+        )
+
+    def get_llm_feedback(self, prompt: str, llm_name: str, midi_path: Path = None) -> dict:
+        """
+        Get feedback from an LLM or music21 analysis. For 'music21', return symbolic analysis as feedback.
+        For real LLMs, use the config and make an API call.
+        """
+        if llm_name == 'music21':
+            # Use music21 analysis as a baseline feedback
+            if midi_path is None:
+                return {'score': 5, 'suggestions': 'No MIDI path provided for music21 analysis.'}
+            features = analyze_midi_with_music21(midi_path)
+            # Simple scoring: closer to target tempo and density is better
+            tempo = features.get('tempo', 0)
+            density = features.get('note_density', 0)
+            target_bpm = self.target_bpm if self.target_bpm is not None else self.target_tempo
+            target_var = self.target_variability if self.target_variability is not None else density
+            tempo_score = -abs(tempo - target_bpm)
+            density_score = -abs(density - target_var)
+            score = 5 + 0.5 * (tempo_score + 0.5 * density_score) / 10  # Normalize to ~1-10
+            suggestions = f"music21 analysis: tempo={tempo}, note_density={density}, key={features.get('key')}, mode={features.get('mode')}, time_signature={features.get('time_signature')}"
+            return {'score': max(1, min(10, score)), 'suggestions': suggestions, 'features': features}
+        # --- LLM API call builder ---
+        config = get_llm_config(llm_name)
+        if not config:
+            return {'score': 5, 'suggestions': f'No config for {llm_name}.'}
+        try:
+            if llm_name == 'openai':
+                headers = {
+                    'Authorization': f"Bearer {config['api_key']}",
+                    'Content-Type': 'application/json',
+                }
+                data = {
+                    'model': config['model'],
+                    'messages': [
+                        {'role': 'system', 'content': 'You are a music analysis assistant.'},
+                        {'role': 'user', 'content': prompt},
+                    ],
+                    'max_tokens': 256,
+                }
+                resp = requests.post(config['endpoint'], headers=headers, json=data, timeout=30)
+                resp.raise_for_status()
+                text = resp.json()['choices'][0]['message']['content']
+            elif llm_name == 'gemini':
+                headers = {
+                    'Content-Type': 'application/json',
+                }
+                params = {'key': config['api_key']}
+                data = {
+                    'contents': [
+                        {'parts': [{'text': prompt}]}
+                    ]
+                }
+                resp = requests.post(config['endpoint'], headers=headers, params=params, json=data, timeout=30)
+                resp.raise_for_status()
+                text = resp.json()['candidates'][0]['content']['parts'][0]['text']
+            elif llm_name == 'ollama':
+                data = {
+                    'model': config['model'],
+                    'prompt': prompt,
+                    'stream': False
+                }
+                resp = requests.post(config['endpoint'], json=data, timeout=30)
+                resp.raise_for_status()
+                text = resp.json().get('response', '')
+            else:
+                return {'score': 5, 'suggestions': f'No API logic for {llm_name}.'}
+            # Parse text for score/suggestions (simple heuristic, can be improved)
+            import re
+            score_match = re.search(r'score\s*[:=\-]?\s*(\d+(?:\.\d+)?)', text, re.IGNORECASE)
+            score = float(score_match.group(1)) if score_match else 5
+            return {'score': max(1, min(10, score)), 'suggestions': text}
+        except Exception as e:
+            return {'score': 5, 'suggestions': f'LLM API error for {llm_name}: {e}'}
+
+    def store_llm_feedback(self, gen: int, individual_id: int, llm_name: str, feedback: dict):
+        key = (gen, individual_id)
+        if key not in self.llm_feedbacks:
+            self.llm_feedbacks[key] = {}
+        self.llm_feedbacks[key][llm_name] = feedback
+        # Also store to disk for later analysis
+        out_path = self.llm_feedback_dir / f'gen{gen}_ind{individual_id}_{llm_name}.json'
+        with open(out_path, 'w', encoding='utf-8') as f:
+            json.dump(feedback, f, ensure_ascii=False, indent=2)
+
+    def aggregate_llm_scores(self, feedbacks: dict) -> float:
+        """
+        Aggregate LLM scores (e.g., mean) for use in fitness.
+        """
+        scores = [fb.get('score', 5) for fb in feedbacks.values()]
+        if not scores:
+            return 0
+        return sum(scores) / len(scores)
 
     def fitness_fn(self, individual: LatentVectorIndividual) -> float:
         output_path = self.output_dir / f"music_gen_{self.generation}_{id(individual)}.mid"
@@ -62,12 +173,30 @@ class MusicGeneticAlgorithm(GeneticAlgorithm):
                 self.music_generator.logger.info(f"GA: Analyzing MIDI {midi_path}")
                 midi = pretty_midi.PrettyMIDI(str(midi_path))
                 tempo = midi.estimate_tempo()
-                self.music_generator.logger.info(f"GA: Estimated tempo: {tempo}")
+                note_density = sum(len(inst.notes) for inst in midi.instruments) / midi.get_end_time() if midi.get_end_time() > 0 else 0
+                self.music_generator.logger.info(f"GA: Estimated tempo: {tempo}, note_density: {note_density}")
             except Exception as e:
                 self.music_generator.logger.error(f"GA: pretty_midi failed: {e}")
-                tempo = 0
-            fitness = -abs(tempo - self.target_tempo)
-            self.music_generator.logger.info(f"GA: Fitness for individual {id(individual)}: {fitness}")
+                tempo, note_density = 0, 0
+            # Use heartbeat-driven targets if provided
+            target_bpm = self.target_bpm if self.target_bpm is not None else self.target_tempo
+            target_var = self.target_variability if self.target_variability is not None else note_density
+            tempo_score = -abs(tempo - target_bpm)
+            density_score = -abs(note_density - target_var)
+            # --- Multi-LLM integration ---
+            prompt = self.prepare_llm_prompt(midi_path)
+            llm_feedbacks = {}
+            for llm_name in self.llm_names:
+                if llm_name == 'music21':
+                    feedback = self.get_llm_feedback(prompt, llm_name, midi_path=midi_path)
+                else:
+                    feedback = self.get_llm_feedback(prompt, llm_name)
+                llm_feedbacks[llm_name] = feedback
+                self.store_llm_feedback(self.generation, id(individual), llm_name, feedback)
+            llm_score = self.aggregate_llm_scores(llm_feedbacks)
+            # Combine LLM score with feature-based fitness (weighted sum)
+            fitness = 0.5 * (tempo_score + 0.5 * density_score) + 0.5 * (llm_score - 5)  # Center LLM score at 0
+            self.music_generator.logger.info(f"GA: Fitness for individual {id(individual)}: {fitness} (tempo_score={tempo_score}, density_score={density_score}, llm_score={llm_score}, llm_feedbacks={llm_feedbacks})")
             return fitness
         except Exception as e:
             self.music_generator.logger.error(f"GA: Exception in fitness_fn: {e}")

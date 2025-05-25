@@ -5,6 +5,7 @@ from typing import Set, Tuple
 import configparser
 from pathlib import Path
 from typing import Dict, Any , List
+import os
 
 
 class AppConfig:
@@ -27,16 +28,16 @@ class AppConfig:
             self._ensure_config_completeness(default_config)
     
     def _get_default_config(self) -> Dict[str, Dict[str, str]]:
-        """Return default configuration dictionary"""
+        """Return default configuration dictionary, loading from env if present"""
         return {
             'PATHS': {
-                'music_vae_path': "C:/Users/oguzh/magenta_musicgen",
-                'fluidsynth_path': "C:/tools/fluidsynth/bin/fluidsynth.exe",
+                'music_vae_path': os.environ.get('MUSIC_VAE_PATH', 'C:/Users/oguzh/magenta_musicgen'),
+                'fluidsynth_path': os.environ.get('FLUIDSYNTH_PATH', 'C:/tools/fluidsynth/bin/fluidsynth.exe'),
             },
             'SETTINGS': {
-                'default_outputs': "3",
-                'volume': "70",
-                'language': "en"
+                'default_outputs': os.environ.get('DEFAULT_OUTPUTS', '3'),
+                'volume': os.environ.get('DEFAULT_VOLUME', '70'),
+                'language': os.environ.get('LANGUAGE', 'en')
             }
         }
     

@@ -263,6 +263,14 @@ class SettingsFrame(ttk.LabelFrame, TooltipMixin):
         self.mood_dropdown.grid(row=5, column=1, sticky="w", padx=(5, 0), pady=2)
         self.create_tooltip(self.mood_dropdown, _("Select the target mood for music generation"))
         
+        # Heartbeat input section
+        ttk.Label(self, text=_("Heartbeat RR Intervals (ms):")).grid(row=6, column=0, sticky="nw", pady=2)
+        self.heartbeat_text = tk.Text(self, height=3, width=30)
+        self.heartbeat_text.grid(row=6, column=1, sticky="w", padx=(5, 0), pady=2)
+        self.create_tooltip(self.heartbeat_text, _( "Paste or enter RR intervals (ms), comma-separated or one per line"))
+        self.simulate_heartbeat_button = ttk.Button(self, text=_("Simulate Heartbeat"), command=self._fill_simulated_heartbeat)
+        self.simulate_heartbeat_button.grid(row=6, column=2, sticky="w", padx=(5, 0), pady=2)
+        
         # Volume control
         ttk.Label(self, text=_("Volume:")).grid(row=1, column=0, sticky="w", pady=2)
         self.volume_var = tk.DoubleVar(value=70)
@@ -319,6 +327,22 @@ class SettingsFrame(ttk.LabelFrame, TooltipMixin):
 
     def get_mood(self) -> str:
         return self.mood_var.get()
+
+    def _fill_simulated_heartbeat(self):
+        # Example: calm simulated RR intervals
+        rr_intervals = [900 + 30 * ((-1) ** i) for i in range(20)]
+        text = ', '.join(str(int(rr)) for rr in rr_intervals)
+        self.heartbeat_text.delete('1.0', tk.END)
+        self.heartbeat_text.insert(tk.END, text)
+
+    def get_heartbeat_rr_intervals(self) -> list:
+        text = self.heartbeat_text.get('1.0', tk.END)
+        # Split by comma or newline, filter out empty strings
+        parts = [p.strip() for p in text.replace('\n', ',').split(',') if p.strip()]
+        try:
+            return [float(p) for p in parts]
+        except Exception:
+            return []
 
 
 class PlaybackControlsFrame(tk.Frame):

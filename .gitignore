@@ -8,3 +8,5 @@ musicvae/__pycache__/genetic_algorithm.cpython-38.pyc
 musicvae/__pycache__/latent_vector_individual.cpython-38.pyc
 musicvae/__pycache__/musicvae_wrapper.cpython-38.pyc
 musicvae/__pycache__/
+.env
+__pycache__

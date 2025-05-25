@@ -5,7 +5,13 @@ A desktop application for generating music using Google's MusicVAE (Variational 
 ## Features
 
 - **AI Music Generation**: Generate music using pre-trained MusicVAE models
-- **GPU Acceleration**: Leverages CUDA-enabled GPUs for faster generation
+- **Genetic Algorithm (GA) Music Evolution**: Evolve music using a genetic algorithm to match user heartbeat and mood
+- **Heartbeat-driven Generation**: Input or simulate heartbeat (BPM/variability) to guide music generation
+- **Multi-LLM Feedback & Research**: Query multiple LLMs (OpenAI, Gemini, Ollama, etc.) for music evaluation and research
+- **Music21 Symbolic Analysis**: Use music21 for baseline symbolic music analysis and evaluation
+- **Modular LLM API Integration**: Easily configure and add new LLMs via environment variables
+- **Environment Variable-based Configuration**: All paths, models, and settings are configurable via `.env` file
+- **.env.example Template**: Example environment file for easy setup
 - **Audio Conversion**: Automatic MIDI to WAV conversion using FluidSynth
 - **Built-in Playback**: Play generated music directly in the application
 - **Configurable Settings**: Customize generation parameters and audio settings
@@ -57,22 +63,28 @@ pip install -r requirements.txt
 
 ### 4. Configure the Application
 
-1. Copy the example configuration:
+1. Copy the example environment file:
    ```bash
-   cp config.ini.example config.ini
+   cp .env.example .env
    ```
-
-2. Edit `config.ini` with your system paths:
-   ```ini
-   [PATHS]
-   music_vae_path = /path/to/your/magenta_musicgen
-   fluidsynth_path = /path/to/fluidsynth/executable
-   
-   [SETTINGS]
-   default_outputs = 3
-   volume = 70
-   language = en
+2. Edit `.env` with your system paths, LLM API keys, and settings:
+   ```env
+   MUSIC_VAE_PATH=/path/to/your/magenta_musicgen
+   FLUIDSYNTH_PATH=/path/to/fluidsynth/executable
+   SOUNDFONT_PATH=/path/to/FluidR3_GM.sf2
+   CHECKPOINT_PATH=/path/to/hierdec-trio_16bar.tar
+   OUTPUT_DIR=/path/to/generated
+   CONFIG_NAME=hierdec-trio_16bar
+   # LLM API keys and endpoints
+   OPENAI_API_KEY=sk-...
+   GEMINI_API_KEY=...
+   OLLAMA_ENDPOINT=http://localhost:11434/api/generate
+   # ...and more, see .env.example
+   DEFAULT_OUTPUTS=3
+   DEFAULT_VOLUME=70
+   LANGUAGE=en
    ```
+3. (Optional) Edit `config.ini` for legacy/config file-based settings.
 
 ## Usage
 
@@ -94,6 +106,7 @@ python -m main_app
 2. **Generate Music**: Click "Generate Music" to start AI music generation
 3. **Wait for Conversion**: The app automatically converts MIDI to WAV
 4. **Play Music**: Select generated files from the list and click "Play"
+5. **Use GA/LLM Features**: Use the GA and LLM feedback features for research and advanced music evolution
 
 ### Keyboard Shortcuts
 
@@ -115,6 +128,8 @@ musicvae-generator/
 ├── localization.py        # Internationalization support
 ├── ui_components.py       # Reusable UI components
 ├── requirements.txt       # Python dependencies
+├── .env.example           # Example environment file
+├── .env                   # Your environment file (not committed)
 ├── config.ini            # Application configuration
 ├── README.md             # This file
 └── locales/              # Translation files
@@ -125,25 +140,26 @@ musicvae-generator/
 
 ## Configuration
 
-### Application Settings
+### Environment Variables (.env)
 
-The `config.ini` file contains all application settings:
+All major paths, model names, LLM API keys, and settings are now configured via environment variables. See `.env.example` for all options.
+
+### Application Settings (Legacy)
+
+The `config.ini` file is still supported for legacy settings:
 
 ```ini
 [PATHS]
 # Path to MusicVAE installation directory
-music_vae_path = C:/Users/username/magenta_musicgen
-
+music_vae_path = /path/to/your/magenta_musicgen
 # Path to FluidSynth executable
-fluidsynth_path = C:/tools/fluidsynth/bin/fluidsynth.exe
+fluidsynth_path = /path/to/fluidsynth/executable
 
 [SETTINGS]
 # Default number of music pieces to generate
 default_outputs = 3
-
 # Default audio volume (0-100)
 volume = 70
-
 # Interface language
 language = en
 ```
@@ -162,12 +178,21 @@ magenta_musicgen/
     └── generated/  # Output directory
 ```
 
+## LLM Feedback & Research Workflow
+
+- **Multi-LLM Support**: Configure and use multiple LLMs (OpenAI, Gemini, Ollama, etc.) for music evaluation and research.
+- **Prompt Engineering**: Prompts are automatically generated from symbolic music and target features.
+- **Feedback Storage**: All LLM feedback is stored for each individual and generation, for later analysis.
+- **Music21 Baseline**: Use music21 symbolic analysis as a baseline or supplement to LLM feedback.
+- **Fitness Aggregation**: Combine LLM and feature-based scores for advanced GA fitness.
+- **Easily Extendable**: Add new LLMs or analysis methods by updating `.env` and config files.
+
 ## Troubleshooting
 
 ### Common Issues
 
 1. **"Configuration Error" on startup**
-   - Check that all paths in `config.ini` are correct
+   - Check that all paths in `.env` or `config.ini` are correct
    - Ensure MusicVAE models and FluidSynth are properly installed
 
 2. **"No CUDA devices found" warning**
@@ -201,6 +226,8 @@ The application uses a modular architecture:
 - **audio_player.py**: Enhance audio playback features
 - **ui_components.py**: Create new UI widgets
 - **localization.py**: Add new language support
+- **llm_config.py**: Add or configure new LLMs and endpoints
+- **genetic_algorithm.py**: Extend GA or LLM feedback logic
 
 ### Adding Translations
 
@@ -208,13 +235,11 @@ The application uses a modular architecture:
    ```bash
    xgettext --language=Python --keyword=_ --output=locales/messages.pot *.py
    ```
-
 2. Create language-specific translations:
    ```bash
    mkdir -p locales/es/LC_MESSAGES
    msginit --input=locales/messages.pot --locale=es --output=locales/es/LC_MESSAGES/musicvae.po
    ```
-
 3. Compile translations:
    ```bash
    msgfmt locales/es/LC_MESSAGES/musicvae.po -o locales/es/LC_MESSAGES/musicvae.mo
