@@ -444,15 +444,9 @@ class MusicGeneratorApp:
         output_dir = self.config.output_dir
         output_dir.mkdir(exist_ok=True)
 
-        # Get heartbeat RR intervals from UI
-        rr_intervals = self.settings_frame.get_heartbeat_rr_intervals()
-        target_bpm = None
-        target_variability = None
-        if rr_intervals:
-            mean_rr = np.mean(rr_intervals)
-            std_rr = np.std(rr_intervals)
-            target_bpm = 60000 / mean_rr
-            target_variability = std_rr / mean_rr  # normalized variability
+        # Get target BPM from UI
+        target_bpm = self.settings_frame.get_target_bpm()
+        target_variability = None  # Can be extended later if needed
 
         # Clean output directory before generation
         for ext in ("*.mid", "*.wav", "*.txt"):
@@ -465,7 +459,7 @@ class MusicGeneratorApp:
         evaluator = self.settings_frame.get_evaluator()
 
         def ga_worker():
-            self.log_widget.log_message(f"Starting Genetic Algorithm music generation for mood: {target_mood} (Evaluator: {evaluator})...")
+            self.log_widget.log_message(f"Starting Genetic Algorithm music generation for mood: {target_mood}, Target BPM: {target_bpm} (Evaluator: {evaluator})...")
             music_generator = MusicVAEWrapper()
             ga = MusicGeneticAlgorithm(
                 population_size, latent_dim, music_generator, output_dir,
@@ -475,7 +469,7 @@ class MusicGeneratorApp:
             abort_due_to_llm_error = False
             for gen in range(generations):
                 ga.generation = gen
-                self.root.after(0, lambda g=gen: self.log_widget.log_message(f"GA Generation {g+1}/{generations} (Evaluator: {evaluator})"))
+                self.root.after(0, lambda g=gen: self.log_widget.log_message(f"GA Generation {g+1}/{generations} (Evaluator: {evaluator}, Target BPM: {target_bpm})"))
                 ga.evaluate(ga.fitness_fn)
                 best = max(ga.population, key=lambda ind: ind.fitness)
                 self.root.after(0, lambda b=best: self.log_widget.log_message(f"  Best fitness: {b.fitness:.4f}"))

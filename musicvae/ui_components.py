@@ -263,13 +263,32 @@ class SettingsFrame(ttk.LabelFrame, TooltipMixin):
         self.mood_dropdown.grid(row=5, column=1, sticky="w", padx=(5, 0), pady=2)
         self.create_tooltip(self.mood_dropdown, _("Select the target mood for music generation"))
         
-        # Heartbeat input section
-        ttk.Label(self, text=_("Heartbeat RR Intervals (ms):")).grid(row=6, column=0, sticky="nw", pady=2)
+        # Target BPM input
+        ttk.Label(self, text=_("Target BPM:")).grid(row=6, column=0, sticky="w", pady=2)
+        self.target_bpm_var = tk.DoubleVar(value=70)
+        self.target_bpm_entry = ttk.Entry(self, textvariable=self.target_bpm_var, width=8)
+        self.target_bpm_entry.grid(row=6, column=1, sticky="w", padx=(5, 0), pady=2)
+        self.create_tooltip(self.target_bpm_entry, _( "Set the target BPM (beats per minute) for music generation"))
+
+        # Heartbeat simulation section
+        self.sim_heartbeat_frame = ttk.Frame(self)
+        self.sim_heartbeat_frame.grid(row=6, column=2, sticky="w", padx=(5, 0), pady=2)
+        self.sim_heartbeat_label = ttk.Label(self.sim_heartbeat_frame, text=_("Simulate Heartbeat:"))
+        self.sim_heartbeat_label.pack(side=tk.LEFT)
+        self.sim_heartbeat_button = ttk.Button(self.sim_heartbeat_frame, text=_("Tap"), command=self._on_heartbeat_tap)
+        self.sim_heartbeat_button.pack(side=tk.LEFT, padx=(2, 0))
+        self.sim_heartbeat_reset = ttk.Button(self.sim_heartbeat_frame, text=_("Reset"), command=self._reset_heartbeat_taps)
+        self.sim_heartbeat_reset.pack(side=tk.LEFT, padx=(2, 0))
+        self.create_tooltip(self.sim_heartbeat_button, _( "Click repeatedly to simulate your heartbeat rhythm. BPM will be calculated."))
+
+        # Manual RR interval input (advanced)
+        ttk.Label(self, text=_("Manual RR Intervals (ms):")).grid(row=8, column=0, sticky="nw", pady=2)
         self.heartbeat_text = tk.Text(self, height=3, width=30)
-        self.heartbeat_text.grid(row=6, column=1, sticky="w", padx=(5, 0), pady=2)
-        self.create_tooltip(self.heartbeat_text, _( "Paste or enter RR intervals (ms), comma-separated or one per line"))
-        self.simulate_heartbeat_button = ttk.Button(self, text=_("Simulate Heartbeat"), command=self._fill_simulated_heartbeat)
-        self.simulate_heartbeat_button.grid(row=6, column=2, sticky="w", padx=(5, 0), pady=2)
+        self.heartbeat_text.grid(row=8, column=1, sticky="w", padx=(5, 0), pady=2)
+        self.create_tooltip(self.heartbeat_text, _( "Paste or enter RR intervals (ms), comma-separated or one per line (advanced)"))
+
+        # Internal state for heartbeat tap simulation
+        self._heartbeat_tap_times = []
         
         # Volume control
         ttk.Label(self, text=_("Volume:")).grid(row=1, column=0, sticky="w", pady=2)
@@ -292,7 +311,7 @@ class SettingsFrame(ttk.LabelFrame, TooltipMixin):
         self.volume_var.trace('w', self._on_volume_change)
         
         # Evaluator selection combobox
-        ttk.Label(self, text=_("Evaluator:")).grid(row=7, column=0, sticky="w", pady=2)
+        ttk.Label(self, text=_("Evaluator:")).grid(row=9, column=0, sticky="w", pady=2)
         self.evaluator_var = tk.StringVar(value='music21')
         # The list of evaluators will be set externally (from main_app)
         self.evaluator_combobox = ttk.Combobox(
@@ -302,7 +321,7 @@ class SettingsFrame(ttk.LabelFrame, TooltipMixin):
             width=20
         )
         self.evaluator_combobox['values'] = ['music21']  # Will be updated in main_app
-        self.evaluator_combobox.grid(row=7, column=1, sticky="w", padx=(5, 0), pady=2)
+        self.evaluator_combobox.grid(row=9, column=1, sticky="w", padx=(5, 0), pady=2)
         self.create_tooltip(self.evaluator_combobox, _( "Select the evaluator for fitness (music21 or LLM)"))
         
         # Configure column weights
@@ -342,21 +361,27 @@ class SettingsFrame(ttk.LabelFrame, TooltipMixin):
     def get_mood(self) -> str:
         return self.mood_var.get()
 
-    def _fill_simulated_heartbeat(self):
-        # Example: calm simulated RR intervals
-        rr_intervals = [900 + 30 * ((-1) ** i) for i in range(20)]
-        text = ', '.join(str(int(rr)) for rr in rr_intervals)
-        self.heartbeat_text.delete('1.0', tk.END)
-        self.heartbeat_text.insert(tk.END, text)
+    def _on_heartbeat_tap(self):
+        import time
+        now = time.time()
+        self._heartbeat_tap_times.append(now)
+        if len(self._heartbeat_tap_times) > 1:
+            intervals = [int(1000 * (self._heartbeat_tap_times[i] - self._heartbeat_tap_times[i-1])) for i in range(1, len(self._heartbeat_tap_times))]
+            if intervals:
+                mean_rr = sum(intervals) / len(intervals)
+                bpm = 60000 / mean_rr if mean_rr > 0 else 0
+                self.target_bpm_var.set(round(bpm, 2))
+                # Also update the interval text for transparency
+                self.heartbeat_text.delete('1.0', tk.END)
+                self.heartbeat_text.insert(tk.END, ', '.join(str(int(rr)) for rr in intervals))
 
-    def get_heartbeat_rr_intervals(self) -> list:
-        text = self.heartbeat_text.get('1.0', tk.END)
-        # Split by comma or newline, filter out empty strings
-        parts = [p.strip() for p in text.replace('\n', ',').split(',') if p.strip()]
-        try:
-            return [float(p) for p in parts]
-        except Exception:
-            return []
+    def _reset_heartbeat_taps(self):
+        self._heartbeat_tap_times = []
+        self.target_bpm_var.set(70)
+        self.heartbeat_text.delete('1.0', tk.END)
+
+    def get_target_bpm(self) -> float:
+        return self.target_bpm_var.get()
 
     def get_evaluator(self) -> str:
         """Get the selected evaluator (music21 or LLM name)"""

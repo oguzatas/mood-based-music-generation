@@ -1,0 +1,3 @@
+Tempo (BPM): Score is higher the closer the generated music is to the target BPM.
+Interval Variety: For "calm" mood, prefers stepwise motion (low variety); for "tense", prefers more leaps (high variety); for "excited", prefers moderate variety; for "neutral", prefers moderate values.
+Chord Complexity: For "calm", prefers simple chords; for "tense", prefers complex chords; for "excited" and "neutral", prefers moderate complexity.

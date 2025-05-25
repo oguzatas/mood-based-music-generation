@@ -1617,3 +1617,491 @@ Instructions for updating:
 2025-05-25 22:38:31,377 - audio_player - INFO - Playback stopped
 2025-05-25 22:38:31,451 - audio_player - INFO - Audio player cleaned up
 2025-05-25 22:38:31,451 - __main__ - INFO - Application shutdown complete
+2025-05-25 22:39:30,896 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-25 22:39:33,204 - __main__ - INFO - ✓ tensorflow available
+2025-05-25 22:39:41,840 - __main__ - INFO - ✓ magenta available
+2025-05-25 22:39:41,841 - __main__ - INFO - Loading main application...
+2025-05-25 22:39:41,848 - __main__ - INFO - Starting GUI application...
+2025-05-25 22:39:41,890 - localization - INFO - Language set to English (default)
+2025-05-25 22:39:41,998 - audio_player - INFO - Audio player initialized successfully
+2025-05-25 22:40:06,559 - tensorflow - INFO - Building MusicVAE model with BidirectionalLstmEncoder, HierarchicalLstmDecoder, and hparams:
+{'max_seq_len': 256, 'z_size': 512, 'free_bits': 256, 'max_beta': 0.2, 'beta_rate': 0.0, 'batch_size': 1, 'grad_clip': 1.0, 'clip_mode': 'global_norm', 'grad_norm_clip_to_zero': 10000, 'learning_rate': 0.001, 'decay_rate': 0.9999, 'min_learning_rate': 1e-05, 'conditional': True, 'dec_rnn_size': [1024, 1024], 'enc_rnn_size': [2048, 2048], 'dropout_keep_prob': 1.0, 'sampling_schedule': 'constant', 'sampling_rate': 0.0, 'use_cudnn': False, 'residual_encoder': False, 'residual_decoder': False, 'control_preprocessing_rnn_size': [256]}
+2025-05-25 22:40:06,562 - tensorflow - INFO - 
+Encoder Cells (bidirectional):
+  units: [2048, 2048]
+
+2025-05-25 22:40:06,566 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 22:40:06,570 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 22:40:06,573 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 22:40:06,577 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 22:40:06,577 - tensorflow - INFO - 
+Hierarchical Decoder:
+  input length: 256
+  level output lengths: [16, 16]
+
+2025-05-25 22:40:06,584 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 22:40:06,590 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 22:40:06,591 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 22:40:06,598 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 22:40:06,599 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 22:40:06,605 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 22:40:06,605 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 22:40:06,614 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 22:40:09,769 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\util\dispatch.py:1082: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+2025-05-25 22:40:09,769 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\magenta\contrib\rnn.py:464: bidirectional_dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.Bidirectional(keras.layers.RNN(cell))`, which is equivalent to this API
+2025-05-25 22:40:09,771 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\ops\rnn.py:437: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+2025-05-25 22:40:09,907 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow_probability\python\distributions\distribution.py:342: calling MultivariateNormalDiag.__init__ (from tensorflow_probability.python.distributions.mvn_diag) with scale_identity_multiplier is deprecated and will be removed after 2020-01-01.
+Instructions for updating:
+`scale_identity_multiplier` is deprecated; please combine it into `scale_diag` directly instead.
+2025-05-25 22:40:09,943 - tensorflow - INFO - Restoring parameters from C:/Users/oguzh/magenta_musicgen/models/hierdec-trio_16bar/hierdec-trio_16bar.ckpt
+2025-05-25 22:40:10,640 - musicvae_wrapper - INFO - GA: Generating for individual 2493424234064
+2025-05-25 22:40:13,128 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493424234064.mid
+2025-05-25 22:40:13,128 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493424234064.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493424234064.wav -r 44100 -q
+2025-05-25 22:40:43,138 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:40:43,138 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2493424234064.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:40:43,413 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 22:40:43,414 - musicvae_wrapper - INFO - GA: Generating for individual 2492623662672
+2025-05-25 22:40:44,507 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2492623662672.mid
+2025-05-25 22:40:44,507 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2492623662672.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2492623662672.wav -r 44100 -q
+2025-05-25 22:41:14,516 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:41:14,516 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2492623662672.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:41:14,652 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 22:41:14,653 - musicvae_wrapper - INFO - GA: Generating for individual 2493442005216
+2025-05-25 22:41:15,756 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493442005216.mid
+2025-05-25 22:41:15,757 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493442005216.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493442005216.wav -r 44100 -q
+2025-05-25 22:41:45,765 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:41:45,767 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2493442005216.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:41:45,900 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 22:41:45,900 - musicvae_wrapper - INFO - GA: Generating for individual 2493425278832
+2025-05-25 22:41:47,012 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493425278832.mid
+2025-05-25 22:41:47,012 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493425278832.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493425278832.wav -r 44100 -q
+2025-05-25 22:42:17,021 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:42:17,022 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2493425278832.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:42:17,156 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 22:42:17,157 - musicvae_wrapper - INFO - GA: Generating for individual 2493442142896
+2025-05-25 22:42:18,380 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493442142896.mid
+2025-05-25 22:42:18,380 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493442142896.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493442142896.wav -r 44100 -q
+2025-05-25 22:42:48,391 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:42:48,392 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2493442142896.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:42:48,702 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 22:42:48,702 - musicvae_wrapper - INFO - GA: Generating for individual 2493442142464
+2025-05-25 22:42:49,816 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493442142464.mid
+2025-05-25 22:42:49,816 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493442142464.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2493442142464.wav -r 44100 -q
+2025-05-25 22:43:19,825 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:43:19,830 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2493442142464.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:43:19,970 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 22:43:19,971 - musicvae_wrapper - INFO - GA: Generating for individual 2493424234064
+2025-05-25 22:43:21,163 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2493424234064.mid
+2025-05-25 22:43:21,163 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2493424234064.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2493424234064.wav -r 44100 -q
+2025-05-25 22:43:51,173 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:43:51,173 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2493424234064.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:43:51,294 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 22:43:51,294 - musicvae_wrapper - INFO - GA: Generating for individual 2492623662672
+2025-05-25 22:43:52,440 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2492623662672.mid
+2025-05-25 22:43:52,441 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2492623662672.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2492623662672.wav -r 44100 -q
+2025-05-25 22:44:22,449 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:44:22,449 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2492623662672.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:44:22,587 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 22:44:22,588 - musicvae_wrapper - INFO - GA: Generating for individual 2493442005216
+2025-05-25 22:44:23,737 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2493442005216.mid
+2025-05-25 22:44:23,738 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2493442005216.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2493442005216.wav -r 44100 -q
+2025-05-25 22:44:53,746 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:44:53,748 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2493442005216.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:44:54,050 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 22:44:54,051 - musicvae_wrapper - INFO - GA: Generating for individual 2492516272640
+2025-05-25 22:44:55,130 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2492516272640.mid
+2025-05-25 22:44:55,130 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2492516272640.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2492516272640.wav -r 44100 -q
+2025-05-25 22:45:25,138 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:45:25,138 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2492516272640.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:45:25,253 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 22:45:25,253 - musicvae_wrapper - INFO - GA: Generating for individual 2492516272976
+2025-05-25 22:45:26,396 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2492516272976.mid
+2025-05-25 22:45:26,396 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2492516272976.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2492516272976.wav -r 44100 -q
+2025-05-25 22:45:56,407 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:45:56,408 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2492516272976.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:45:56,536 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 22:45:56,538 - musicvae_wrapper - INFO - GA: Generating for individual 2492516273072
+2025-05-25 22:45:57,660 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2492516273072.mid
+2025-05-25 22:45:57,660 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2492516273072.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2492516273072.wav -r 44100 -q
+2025-05-25 22:46:27,673 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:46:27,674 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2492516273072.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:46:27,808 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 22:46:27,811 - musicvae_wrapper - INFO - GA: Generating for individual 2493424234064
+2025-05-25 22:46:28,905 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2493424234064.mid
+2025-05-25 22:46:28,906 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2493424234064.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2493424234064.wav -r 44100 -q
+2025-05-25 22:46:58,917 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:46:58,918 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2493424234064.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:46:59,036 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 22:46:59,036 - musicvae_wrapper - INFO - GA: Generating for individual 2492623662672
+2025-05-25 22:47:00,115 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2492623662672.mid
+2025-05-25 22:47:00,116 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2492623662672.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2492623662672.wav -r 44100 -q
+2025-05-25 22:47:30,125 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:47:30,126 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2492623662672.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:47:30,483 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 22:47:30,484 - musicvae_wrapper - INFO - GA: Generating for individual 2493442005216
+2025-05-25 22:47:31,681 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2493442005216.mid
+2025-05-25 22:47:31,681 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2493442005216.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2493442005216.wav -r 44100 -q
+2025-05-25 22:48:01,692 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:48:01,695 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2493442005216.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:48:01,827 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 22:48:01,828 - musicvae_wrapper - INFO - GA: Generating for individual 2492512454640
+2025-05-25 22:48:02,943 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2492512454640.mid
+2025-05-25 22:48:02,943 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2492512454640.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2492512454640.wav -r 44100 -q
+2025-05-25 22:48:32,954 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:48:32,955 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2492512454640.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:48:33,102 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 22:48:33,103 - musicvae_wrapper - INFO - GA: Generating for individual 2494248285520
+2025-05-25 22:48:34,197 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2494248285520.mid
+2025-05-25 22:48:34,197 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2494248285520.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2494248285520.wav -r 44100 -q
+2025-05-25 22:49:04,208 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:49:04,209 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2494248285520.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:49:04,511 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 22:49:04,512 - musicvae_wrapper - INFO - GA: Generating for individual 2494248285664
+2025-05-25 22:49:05,593 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2494248285664.mid
+2025-05-25 22:49:05,593 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2494248285664.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2494248285664.wav -r 44100 -q
+2025-05-25 22:49:35,602 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 22:49:35,605 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2494248285664.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 22:49:35,765 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:00:21,953 - audio_player - INFO - Playback stopped
+2025-05-25 23:00:21,954 - audio_player - INFO - Playback stopped
+2025-05-25 23:00:22,023 - audio_player - INFO - Audio player cleaned up
+2025-05-25 23:00:22,023 - __main__ - INFO - Application shutdown complete
+2025-05-25 23:00:26,139 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-25 23:00:28,499 - __main__ - INFO - ✓ tensorflow available
+2025-05-25 23:00:39,597 - __main__ - INFO - ✓ magenta available
+2025-05-25 23:00:39,597 - __main__ - INFO - Loading main application...
+2025-05-25 23:00:39,607 - __main__ - INFO - Starting GUI application...
+2025-05-25 23:00:39,649 - localization - INFO - Language set to English (default)
+2025-05-25 23:00:39,777 - audio_player - INFO - Audio player initialized successfully
+2025-05-25 23:01:53,406 - tensorflow - INFO - Building MusicVAE model with BidirectionalLstmEncoder, HierarchicalLstmDecoder, and hparams:
+{'max_seq_len': 256, 'z_size': 512, 'free_bits': 256, 'max_beta': 0.2, 'beta_rate': 0.0, 'batch_size': 1, 'grad_clip': 1.0, 'clip_mode': 'global_norm', 'grad_norm_clip_to_zero': 10000, 'learning_rate': 0.001, 'decay_rate': 0.9999, 'min_learning_rate': 1e-05, 'conditional': True, 'dec_rnn_size': [1024, 1024], 'enc_rnn_size': [2048, 2048], 'dropout_keep_prob': 1.0, 'sampling_schedule': 'constant', 'sampling_rate': 0.0, 'use_cudnn': False, 'residual_encoder': False, 'residual_decoder': False, 'control_preprocessing_rnn_size': [256]}
+2025-05-25 23:01:53,409 - tensorflow - INFO - 
+Encoder Cells (bidirectional):
+  units: [2048, 2048]
+
+2025-05-25 23:01:53,414 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:01:53,418 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:01:53,422 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:01:53,426 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:01:53,426 - tensorflow - INFO - 
+Hierarchical Decoder:
+  input length: 256
+  level output lengths: [16, 16]
+
+2025-05-25 23:01:53,432 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:01:53,439 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:01:53,440 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 23:01:53,447 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:01:53,448 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 23:01:53,455 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:01:53,456 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 23:01:53,464 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:01:56,687 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\util\dispatch.py:1082: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+2025-05-25 23:01:56,688 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\magenta\contrib\rnn.py:464: bidirectional_dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.Bidirectional(keras.layers.RNN(cell))`, which is equivalent to this API
+2025-05-25 23:01:56,689 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\ops\rnn.py:437: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+2025-05-25 23:01:56,831 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow_probability\python\distributions\distribution.py:342: calling MultivariateNormalDiag.__init__ (from tensorflow_probability.python.distributions.mvn_diag) with scale_identity_multiplier is deprecated and will be removed after 2020-01-01.
+Instructions for updating:
+`scale_identity_multiplier` is deprecated; please combine it into `scale_diag` directly instead.
+2025-05-25 23:01:56,868 - tensorflow - INFO - Restoring parameters from C:/Users/oguzh/magenta_musicgen/models/hierdec-trio_16bar/hierdec-trio_16bar.ckpt
+2025-05-25 23:01:57,555 - musicvae_wrapper - INFO - GA: Generating for individual 2154121786080
+2025-05-25 23:02:00,128 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2154121786080.mid
+2025-05-25 23:02:00,128 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2154121786080.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2154121786080.wav -r 44100 -q
+2025-05-25 23:02:30,136 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:02:30,137 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2154121786080.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:02:30,422 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:02:30,423 - musicvae_wrapper - INFO - GA: Generating for individual 2152268186192
+2025-05-25 23:02:31,532 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2152268186192.mid
+2025-05-25 23:02:31,532 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2152268186192.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2152268186192.wav -r 44100 -q
+2025-05-25 23:03:01,541 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:03:01,542 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2152268186192.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:03:01,685 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:03:01,685 - musicvae_wrapper - INFO - GA: Generating for individual 2152268186384
+2025-05-25 23:03:02,880 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2152268186384.mid
+2025-05-25 23:03:02,880 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2152268186384.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2152268186384.wav -r 44100 -q
+2025-05-25 23:03:32,888 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:03:32,891 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2152268186384.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:03:33,037 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:03:33,038 - musicvae_wrapper - INFO - GA: Generating for individual 2154139224864
+2025-05-25 23:03:34,192 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2154139224864.mid
+2025-05-25 23:03:34,193 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2154139224864.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2154139224864.wav -r 44100 -q
+2025-05-25 23:04:04,204 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:04:04,206 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2154139224864.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:04:04,511 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:04:04,512 - musicvae_wrapper - INFO - GA: Generating for individual 2154139661792
+2025-05-25 23:04:05,699 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2154139661792.mid
+2025-05-25 23:04:05,699 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2154139661792.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2154139661792.wav -r 44100 -q
+2025-05-25 23:04:35,708 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:04:35,708 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2154139661792.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:04:35,854 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:04:35,854 - musicvae_wrapper - INFO - GA: Generating for individual 2154139661312
+2025-05-25 23:04:36,979 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2154139661312.mid
+2025-05-25 23:04:36,980 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2154139661312.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2154139661312.wav -r 44100 -q
+2025-05-25 23:05:06,988 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:05:06,988 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2154139661312.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:05:07,122 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:05:07,124 - musicvae_wrapper - INFO - GA: Generating for individual 2154121786080
+2025-05-25 23:05:08,321 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2154121786080.mid
+2025-05-25 23:05:08,322 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2154121786080.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2154121786080.wav -r 44100 -q
+2025-05-25 23:05:38,331 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:05:38,332 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2154121786080.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:05:38,471 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:05:38,472 - musicvae_wrapper - INFO - GA: Generating for individual 2152268186192
+2025-05-25 23:05:39,574 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152268186192.mid
+2025-05-25 23:05:39,574 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152268186192.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152268186192.wav -r 44100 -q
+2025-05-25 23:06:09,583 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:06:09,585 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2152268186192.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:06:09,896 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:06:09,896 - musicvae_wrapper - INFO - GA: Generating for individual 2152268186384
+2025-05-25 23:06:11,038 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152268186384.mid
+2025-05-25 23:06:11,038 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152268186384.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152268186384.wav -r 44100 -q
+2025-05-25 23:06:41,048 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:06:41,049 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2152268186384.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:06:41,204 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:06:41,204 - musicvae_wrapper - INFO - GA: Generating for individual 2152156065856
+2025-05-25 23:06:42,334 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152156065856.mid
+2025-05-25 23:06:42,334 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152156065856.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152156065856.wav -r 44100 -q
+2025-05-25 23:07:12,344 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:07:12,344 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2152156065856.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:07:12,491 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:07:12,491 - musicvae_wrapper - INFO - GA: Generating for individual 2152156066672
+2025-05-25 23:07:13,589 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152156066672.mid
+2025-05-25 23:07:13,589 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152156066672.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152156066672.wav -r 44100 -q
+2025-05-25 23:07:43,596 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:07:43,597 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2152156066672.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:07:43,724 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:07:43,724 - musicvae_wrapper - INFO - GA: Generating for individual 2152156066768
+2025-05-25 23:07:44,832 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152156066768.mid
+2025-05-25 23:07:44,832 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152156066768.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2152156066768.wav -r 44100 -q
+2025-05-25 23:08:14,847 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:08:14,849 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2152156066768.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:08:15,182 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:08:15,183 - musicvae_wrapper - INFO - GA: Generating for individual 2154121786080
+2025-05-25 23:08:16,301 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2154121786080.mid
+2025-05-25 23:08:16,301 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2154121786080.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2154121786080.wav -r 44100 -q
+2025-05-25 23:08:46,312 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:08:46,313 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2154121786080.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:08:46,453 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:08:46,454 - musicvae_wrapper - INFO - GA: Generating for individual 2152268186192
+2025-05-25 23:08:47,561 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2152268186192.mid
+2025-05-25 23:08:47,561 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2152268186192.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2152268186192.wav -r 44100 -q
+2025-05-25 23:09:17,578 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:09:17,579 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2152268186192.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:09:17,706 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:09:17,706 - musicvae_wrapper - INFO - GA: Generating for individual 2152268186384
+2025-05-25 23:09:18,821 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2152268186384.mid
+2025-05-25 23:09:18,821 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2152268186384.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2152268186384.wav -r 44100 -q
+2025-05-25 23:09:48,829 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:09:48,830 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2152268186384.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:09:48,978 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:09:48,979 - musicvae_wrapper - INFO - GA: Generating for individual 2155291976560
+2025-05-25 23:09:50,086 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2155291976560.mid
+2025-05-25 23:09:50,086 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2155291976560.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2155291976560.wav -r 44100 -q
+2025-05-25 23:10:20,105 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:10:20,109 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2155291976560.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:10:20,421 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:10:20,421 - musicvae_wrapper - INFO - GA: Generating for individual 2155291977136
+2025-05-25 23:10:21,549 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2155291977136.mid
+2025-05-25 23:10:21,550 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2155291977136.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2155291977136.wav -r 44100 -q
+2025-05-25 23:10:51,568 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:10:51,569 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2155291977136.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:10:51,728 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:10:51,728 - musicvae_wrapper - INFO - GA: Generating for individual 2155291977664
+2025-05-25 23:10:52,836 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2155291977664.mid
+2025-05-25 23:10:52,836 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2155291977664.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2155291977664.wav -r 44100 -q
+2025-05-25 23:11:22,846 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:11:22,847 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2155291977664.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:11:22,991 - musicvae_wrapper - ERROR - GA: Exception in fitness_fn: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:14:18,202 - audio_player - INFO - Playback stopped
+2025-05-25 23:14:18,202 - audio_player - INFO - Playback stopped
+2025-05-25 23:14:18,266 - audio_player - INFO - Audio player cleaned up
+2025-05-25 23:14:18,267 - __main__ - INFO - Application shutdown complete
+2025-05-25 23:15:25,591 - __main__ - INFO - Starting MusicVAE Generator application
+2025-05-25 23:15:27,760 - __main__ - INFO - ✓ tensorflow available
+2025-05-25 23:15:36,296 - __main__ - INFO - ✓ magenta available
+2025-05-25 23:15:36,296 - __main__ - INFO - Loading main application...
+2025-05-25 23:15:36,301 - __main__ - INFO - Starting GUI application...
+2025-05-25 23:15:36,337 - localization - INFO - Language set to English (default)
+2025-05-25 23:15:36,440 - audio_player - INFO - Audio player initialized successfully
+2025-05-25 23:15:57,984 - tensorflow - INFO - Building MusicVAE model with BidirectionalLstmEncoder, HierarchicalLstmDecoder, and hparams:
+{'max_seq_len': 256, 'z_size': 512, 'free_bits': 256, 'max_beta': 0.2, 'beta_rate': 0.0, 'batch_size': 1, 'grad_clip': 1.0, 'clip_mode': 'global_norm', 'grad_norm_clip_to_zero': 10000, 'learning_rate': 0.001, 'decay_rate': 0.9999, 'min_learning_rate': 1e-05, 'conditional': True, 'dec_rnn_size': [1024, 1024], 'enc_rnn_size': [2048, 2048], 'dropout_keep_prob': 1.0, 'sampling_schedule': 'constant', 'sampling_rate': 0.0, 'use_cudnn': False, 'residual_encoder': False, 'residual_decoder': False, 'control_preprocessing_rnn_size': [256]}
+2025-05-25 23:15:57,986 - tensorflow - INFO - 
+Encoder Cells (bidirectional):
+  units: [2048, 2048]
+
+2025-05-25 23:15:57,991 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:15:57,994 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:15:57,998 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:15:58,002 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:15:58,003 - tensorflow - INFO - 
+Hierarchical Decoder:
+  input length: 256
+  level output lengths: [16, 16]
+
+2025-05-25 23:15:58,010 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:15:58,016 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:15:58,017 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 23:15:58,025 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:15:58,025 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 23:15:58,032 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:15:58,033 - tensorflow - INFO - 
+Decoder Cells:
+  units: [1024, 1024]
+
+2025-05-25 23:15:58,040 - tensorflow - WARNING - `tf.nn.rnn_cell.MultiRNNCell` is deprecated. This class is equivalent as `tf.keras.layers.StackedRNNCells`, and will be replaced by that in Tensorflow 2.0.
+2025-05-25 23:16:01,140 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\util\dispatch.py:1082: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+2025-05-25 23:16:01,141 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\magenta\contrib\rnn.py:464: bidirectional_dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.Bidirectional(keras.layers.RNN(cell))`, which is equivalent to this API
+2025-05-25 23:16:01,141 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow\python\ops\rnn.py:437: dynamic_rnn (from tensorflow.python.ops.rnn) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `keras.layers.RNN(cell)`, which is equivalent to this API
+2025-05-25 23:16:01,272 - tensorflow - WARNING - From C:\Users\oguzh\anaconda3\envs\magenta-env\lib\site-packages\tensorflow_probability\python\distributions\distribution.py:342: calling MultivariateNormalDiag.__init__ (from tensorflow_probability.python.distributions.mvn_diag) with scale_identity_multiplier is deprecated and will be removed after 2020-01-01.
+Instructions for updating:
+`scale_identity_multiplier` is deprecated; please combine it into `scale_diag` directly instead.
+2025-05-25 23:16:01,308 - tensorflow - INFO - Restoring parameters from C:/Users/oguzh/magenta_musicgen/models/hierdec-trio_16bar/hierdec-trio_16bar.ckpt
+2025-05-25 23:16:01,984 - musicvae_wrapper - INFO - GA: Generating for individual 2235699271616
+2025-05-25 23:16:04,311 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2235699271616.mid
+2025-05-25 23:16:04,311 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2235699271616.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2235699271616.wav -r 44100 -q
+2025-05-25 23:16:34,320 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:16:34,321 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2235699271616.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:16:34,595 - musicvae_wrapper - ERROR - GA: Fitness function error: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:16:34,596 - musicvae_wrapper - INFO - GA: Generating for individual 2233800385680
+2025-05-25 23:16:35,763 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2233800385680.mid
+2025-05-25 23:16:35,763 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2233800385680.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2233800385680.wav -r 44100 -q
+2025-05-25 23:17:05,773 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:17:05,774 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2233800385680.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:17:05,884 - musicvae_wrapper - ERROR - GA: Fitness function error: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:17:05,884 - musicvae_wrapper - INFO - GA: Generating for individual 2233800385872
+2025-05-25 23:17:06,990 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2233800385872.mid
+2025-05-25 23:17:06,991 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2233800385872.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2233800385872.wav -r 44100 -q
+2025-05-25 23:17:36,999 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:17:37,000 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2233800385872.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:17:37,101 - musicvae_wrapper - ERROR - GA: Fitness function error: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:17:37,102 - musicvae_wrapper - INFO - GA: Generating for individual 2235699474496
+2025-05-25 23:17:38,229 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2235699474496.mid
+2025-05-25 23:17:38,230 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2235699474496.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2235699474496.wav -r 44100 -q
+2025-05-25 23:18:08,243 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:18:08,243 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2235699474496.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:18:08,362 - musicvae_wrapper - ERROR - GA: Fitness function error: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:18:08,362 - musicvae_wrapper - INFO - GA: Generating for individual 2235699475120
+2025-05-25 23:18:09,460 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2235699475120.mid
+2025-05-25 23:18:09,460 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2235699475120.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2235699475120.wav -r 44100 -q
+2025-05-25 23:18:39,471 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:18:39,473 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2235699475120.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:18:39,591 - musicvae_wrapper - ERROR - GA: Fitness function error: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:18:39,592 - musicvae_wrapper - INFO - GA: Generating for individual 2235699474688
+2025-05-25 23:18:40,682 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2235699474688.mid
+2025-05-25 23:18:40,682 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2235699474688.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_0_2235699474688.wav -r 44100 -q
+2025-05-25 23:19:10,691 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:19:10,691 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_0_2235699474688.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:19:10,801 - musicvae_wrapper - ERROR - GA: Fitness function error: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:19:10,803 - musicvae_wrapper - INFO - GA: Generating for individual 2235699271616
+2025-05-25 23:19:11,917 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2235699271616.mid
+2025-05-25 23:19:11,917 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2235699271616.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2235699271616.wav -r 44100 -q
+2025-05-25 23:19:41,925 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:19:41,925 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2235699271616.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:19:42,255 - musicvae_wrapper - ERROR - GA: Fitness function error: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:19:42,255 - musicvae_wrapper - INFO - GA: Generating for individual 2233800385680
+2025-05-25 23:19:43,532 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2233800385680.mid
+2025-05-25 23:19:43,532 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2233800385680.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2233800385680.wav -r 44100 -q
+2025-05-25 23:20:13,540 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:20:13,540 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2233800385680.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:20:13,669 - musicvae_wrapper - ERROR - GA: Fitness function error: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:20:13,670 - musicvae_wrapper - INFO - GA: Generating for individual 2233800385872
+2025-05-25 23:20:14,941 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2233800385872.mid
+2025-05-25 23:20:14,941 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2233800385872.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2233800385872.wav -r 44100 -q
+2025-05-25 23:20:44,948 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:20:44,948 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2233800385872.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:20:45,066 - musicvae_wrapper - ERROR - GA: Fitness function error: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:20:45,067 - musicvae_wrapper - INFO - GA: Generating for individual 2236847776192
+2025-05-25 23:20:46,302 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2236847776192.mid
+2025-05-25 23:20:46,303 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2236847776192.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2236847776192.wav -r 44100 -q
+2025-05-25 23:21:16,311 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:21:16,312 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2236847776192.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:21:16,422 - musicvae_wrapper - ERROR - GA: Fitness function error: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:21:16,423 - musicvae_wrapper - INFO - GA: Generating for individual 2236851223616
+2025-05-25 23:21:17,621 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2236851223616.mid
+2025-05-25 23:21:17,621 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2236851223616.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2236851223616.wav -r 44100 -q
+2025-05-25 23:21:47,632 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:21:47,632 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2236851223616.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:21:47,891 - musicvae_wrapper - ERROR - GA: Fitness function error: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:21:47,891 - musicvae_wrapper - INFO - GA: Generating for individual 2236851221984
+2025-05-25 23:21:49,072 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2236851221984.mid
+2025-05-25 23:21:49,075 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2236851221984.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_1_2236851221984.wav -r 44100 -q
+2025-05-25 23:22:19,084 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:22:19,086 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_1_2236851221984.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:22:19,217 - musicvae_wrapper - ERROR - GA: Fitness function error: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:22:19,220 - musicvae_wrapper - INFO - GA: Generating for individual 2235699271616
+2025-05-25 23:22:20,415 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2235699271616.mid
+2025-05-25 23:22:20,415 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2235699271616.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2235699271616.wav -r 44100 -q
+2025-05-25 23:22:50,423 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:22:50,423 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2235699271616.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:22:50,751 - musicvae_wrapper - ERROR - GA: Fitness function error: 'Unpitched' object has no attribute 'pitch'
+2025-05-25 23:22:50,751 - musicvae_wrapper - INFO - GA: Generating for individual 2233800385680
+2025-05-25 23:22:51,947 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2233800385680.mid
+2025-05-25 23:22:51,949 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2233800385680.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2233800385680.wav -r 44100 -q
+2025-05-25 23:23:21,959 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:23:21,962 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2233800385680.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:23:22,079 - musicvae_wrapper - ERROR - GA: Fitness function error: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:23:22,080 - musicvae_wrapper - INFO - GA: Generating for individual 2233800385872
+2025-05-25 23:23:23,255 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2233800385872.mid
+2025-05-25 23:23:23,255 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2233800385872.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2233800385872.wav -r 44100 -q
+2025-05-25 23:23:53,263 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:23:53,264 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2233800385872.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:23:53,377 - musicvae_wrapper - ERROR - GA: Fitness function error: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:23:53,377 - musicvae_wrapper - INFO - GA: Generating for individual 2233737660832
+2025-05-25 23:23:54,558 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2233737660832.mid
+2025-05-25 23:23:54,558 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2233737660832.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2233737660832.wav -r 44100 -q
+2025-05-25 23:24:24,570 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:24:24,570 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2233737660832.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:24:24,700 - musicvae_wrapper - ERROR - GA: Fitness function error: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:24:24,700 - musicvae_wrapper - INFO - GA: Generating for individual 2236521951088
+2025-05-25 23:24:25,896 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2236521951088.mid
+2025-05-25 23:24:25,896 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2236521951088.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2236521951088.wav -r 44100 -q
+2025-05-25 23:24:55,903 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:24:55,905 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2236521951088.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:24:56,025 - musicvae_wrapper - ERROR - GA: Fitness function error: 'PercussionChord' object has no attribute 'pitch'
+2025-05-25 23:24:56,025 - musicvae_wrapper - INFO - GA: Generating for individual 2236847776048
+2025-05-25 23:24:57,206 - musicvae_wrapper - INFO - Generated MIDI: C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2236847776048.mid
+2025-05-25 23:24:57,207 - musicvae_wrapper - INFO - GA: Converting MIDI to WAV with FluidSynth: C:/tools/fluidsynth/bin/fluidsynth.exe -ni soundfonts/FluidR3_GM.sf2 C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2236847776048.mid -F C:\Users\oguzh\magenta_musicgen\musicvae\generated\music_gen_2_2236847776048.wav -r 44100 -q
+2025-05-25 23:25:27,216 - musicvae_wrapper - ERROR - GA: FluidSynth conversion timed out!
+2025-05-25 23:25:27,216 - musicvae_wrapper - INFO - GA: Generation result: {'midi_path': 'C:\\Users\\oguzh\\magenta_musicgen\\musicvae\\generated\\music_gen_2_2236847776048.mid', 'wav_path': None, 'error': 'FluidSynth timeout'}
+2025-05-25 23:25:27,330 - musicvae_wrapper - ERROR - GA: Fitness function error: 'PercussionChord' object has no attribute 'pitch'
