@@ -18,6 +18,19 @@ A desktop application for generating music using Google's MusicVAE (Variational 
 - **Multi-language Support**: Internationalization ready (i18n)
 - **Comprehensive Logging**: Detailed activity logs for debugging and monitoring
 
+
+### Genetic Algoritm Implementation
+
+Current Setup:
+The Genetic Algorithm evolves the latent vectors that are input into the MusicVAE model. It does not modify the model’s weights.
+
+Result:
+The model itself is not being trained. Instead, the GA is used to search for the best possible inputs (latent codes) that produce outputs matching a defined fitness function (e.g., mood, BPM, musicality).
+
+Limitation:
+The musical “style” and generative capabilities of the MusicVAE model are fixed. The GA only explores what the pretrained model is already capable of generating—it does not expand or alter that capability.
+
+
 ## Prerequisites
 
 ### System Requirements
